@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eri quiroz — consultoría de producto con IA</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f4f1ea'/%3E%3Ccircle cx='48' cy='48' r='30' fill='none' stroke='%231a1a1a' stroke-width='8'/%3E%3Ccircle cx='71' cy='71' r='6.5' fill='%231a1a1a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --beige:#f4f1ea; --beige-2:#efe9df; --paper:#faf8f3;
+    --ink:#1a1a1a; --graphite:#3a3a3a; --muted:#7a7266;
+    --sand:#c9bca8; --sand-2:#e8e2d6; --deep:#a8967d; --line:#e4ddd0;
+    --maxw:1080px; --pad:48px;
+  }
+  html{background:var(--beige);scroll-behavior:smooth}
+  body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--graphite);
+    background:var(--beige);line-height:1.6;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility}
+  ::selection{background:var(--sand);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--deep)}
+  h1,h2,h3{color:var(--ink);font-weight:500;letter-spacing:-.01em}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:40;background:rgba(244,241,234,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+  nav.stuck{border-color:var(--line)}
+  .navin{max-width:var(--maxw);margin:0 auto;padding:18px var(--pad);
+    display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .nm{font-size:16px;letter-spacing:.14em;font-weight:400;color:var(--ink)}
+  .navlinks{display:flex;align-items:center;gap:30px}
+  .navlinks a{font-size:14px;color:var(--graphite);transition:color .15s}
+  .navlinks a:hover{color:var(--ink)}
+  .navlinks a.cta{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;
+    border:1.5px solid var(--ink);color:var(--ink);padding:9px 16px;border-radius:9px;
+    transition:background .18s,color .18s}
+  .navlinks a.cta:hover{background:var(--ink);color:var(--beige)}
+  @media(max-width:680px){.navlinks .hidesm{display:none}}
+
+  /* ---------- section ---------- */
+  section{padding:96px 0;border-top:1px solid var(--line)}
+  .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+    margin-bottom:44px;flex-wrap:wrap}
+  .sechead h2{font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);font-weight:500}
+  .sechead .note{font-size:13px;color:var(--muted)}
+
+  /* ---------- HERO ---------- */
+  .hero{border-top:none}
+  .h1wrap{padding:88px 0 84px}
+  .h1wrap .eyebrow{margin-bottom:30px}
+  .display{font-size:clamp(38px,6.4vw,76px);line-height:1.04;font-weight:400;
+    letter-spacing:-.02em;color:var(--ink);max-width:16ch}
+  .display em{font-style:normal;color:var(--deep)}
+  .h1sub{margin-top:34px;font-size:19px;color:var(--graphite);max-width:50ch;line-height:1.55}
+  .h1meta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;
+    padding:13px 22px;border-radius:10px;border:1.5px solid transparent;cursor:pointer;
+    white-space:nowrap;transition:transform .16s,background .16s,border-color .16s,color .16s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn .arr{font-family:'JetBrains Mono',monospace;font-size:13px}
+  .btn-pri{background:var(--ink);color:var(--beige)}
+  .btn-pri:hover{background:#000}
+  .btn-sec{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-sec:hover{background:var(--ink);color:var(--beige)}
+  .btn-ghost{background:transparent;color:var(--deep);padding:13px 4px}
+  .btn-ghost:hover{color:var(--ink)}
+
+  /* ---------- proyectos ---------- */
+  .apps{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .appcard:nth-child(3){grid-column:1 / -1}
+  .appcard{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:26px 26px 22px;display:flex;flex-direction:column;gap:16px;
+    transition:transform .18s,box-shadow .18s,border-color .18s}
+  .appcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(90,75,55,.10);border-color:var(--sand)}
+  .appcard .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .appthumb{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:var(--beige-2);border:1px solid var(--line);flex:0 0 auto}
+  .badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--deep);display:inline-flex;align-items:center;gap:7px}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:#5a9e6f;
+    box-shadow:0 0 0 3px rgba(90,158,111,.18)}
+  /* badge variantes */
+  .badge-building .dot{background:#d4a017;box-shadow:0 0 0 3px rgba(212,160,23,.18)}
+  .badge-building{color:#a8801a}
+  .badge-service .dot{background:var(--deep);box-shadow:none}
+  .badge-service{color:var(--deep)}
+  .appcard h3{font-size:21px;font-weight:500}
+  .appcard p{font-size:14.5px;color:var(--graphite);line-height:1.5;flex:1}
+  .appcard .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    border-top:1px solid var(--line);padding-top:16px;margin-top:2px}
+  .appcard .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+  .appcard .try{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink);
+    display:inline-flex;align-items:center;gap:7px}
+  .appcard .try .arr{transition:transform .18s}
+  .appcard:hover .try .arr{transform:translateX(4px)}
+  @media(max-width:760px){
+    .apps{grid-template-columns:1fr}
+    .appcard:nth-child(3){grid-column:auto}
+  }
+
+  /* ---------- dentalgrow ---------- */
+  #dentalgrow{background:var(--beige-2)}
+  .dg-header{margin-bottom:0}
+  .dg-header .eyebrow{margin-bottom:18px}
+  .dg-title{font-size:clamp(32px,4vw,52px);font-weight:400;color:var(--ink);
+    letter-spacing:-.02em;line-height:1.1}
+  .dg-body{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
+    margin-top:44px}
+  .dg-lede{font-size:20px;font-weight:400;color:var(--ink);line-height:1.5}
+  .dg-body .dg-right p{font-size:15.5px;color:var(--graphite);line-height:1.6}
+  .dg-cta{margin-top:28px}
+  @media(max-width:760px){.dg-body{grid-template-columns:1fr;gap:28px}}
+
+  /* ---------- notas / blog ---------- */
+  .posts{display:flex;flex-direction:column}
+  .post{display:grid;grid-template-columns:120px 1fr auto;gap:28px;align-items:baseline;
+    padding:26px 4px;border-top:1px solid var(--line);transition:padding-left .2s}
+  .post:first-child{border-top:none}
+  .post:not(.post-soon):hover{padding-left:12px}
+  .post .date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap}
+  .post .ttl{font-size:20px;color:var(--ink);font-weight:500;line-height:1.3}
+  .post .ex{font-size:14px;color:var(--graphite);margin-top:7px;max-width:60ch}
+  .post .read{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .post .read .arr{transition:transform .18s;display:inline-block}
+  .post:hover .read .arr{transform:translateX(4px)}
+  .post-soon{opacity:.6;cursor:default}
+  @media(max-width:680px){.post{grid-template-columns:1fr;gap:6px}.post .read{display:none}}
+
+  /* ---------- sobre / cómo trabajo ---------- */
+  .about{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+  .about .lede{font-size:20px;color:var(--ink);line-height:1.5;font-weight:400}
+  .about p{font-size:15.5px;color:var(--graphite);margin-top:18px;max-width:54ch}
+  .steps{display:flex;flex-direction:column;gap:2px}
+  .step{display:flex;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+  .step:first-child{border-top:none}
+  .step .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--deep);padding-top:3px}
+  .step .st{font-size:15px;color:var(--ink);font-weight:500}
+  .step .sd{font-size:13.5px;color:var(--muted);margin-top:3px}
+  @media(max-width:760px){.about{grid-template-columns:1fr;gap:36px}}
+
+  /* ---------- contacto ---------- */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .contact .lede{font-size:clamp(26px,3.4vw,38px);font-weight:400;color:var(--ink);
+    line-height:1.18;letter-spacing:-.01em;max-width:14ch}
+  .ways{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+  .way{display:flex;align-items:center;gap:13px;font-size:15px;color:var(--graphite)}
+  .way .ic{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--paper);
+    display:grid;place-items:center;flex:0 0 auto}
+  .way a{color:var(--ink);border-bottom:1px solid var(--sand);transition:border-color .15s}
+  .way a:hover{border-color:var(--ink)}
+  .socials{margin-top:28px;display:flex;gap:10px}
+  .socials a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--graphite);
+    border:1px solid var(--line);border-radius:8px;padding:8px 13px;background:var(--paper);
+    transition:border-color .15s,color .15s}
+  .socials a:hover{border-color:var(--ink);color:var(--ink)}
+  form{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .field input,.field textarea{width:100%;font-family:inherit;font-size:15px;color:var(--ink);
+    background:var(--beige);border:1px solid var(--line);border-radius:10px;padding:13px 15px;
+    transition:border-color .15s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--deep)}
+  .field textarea{resize:vertical;min-height:104px}
+  form .btn-pri{width:100%;justify-content:center;margin-top:4px}
+  form .btn-pri:disabled{opacity:.6;cursor:default;transform:none}
+  .formnote{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+  @media(max-width:760px){.contact{grid-template-columns:1fr;gap:36px}}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:46px 0 70px}
+  .footin{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .footin .brand .nm{font-size:14px}
+  footer .cr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+
+  /* ---------- reveal on scroll ---------- */
+  @keyframes revealIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:no-preference){
+    .reveal.in{animation:revealIn .7s ease both}
+  }
+
+  /* ========== RESPONSIVE ========== */
+
+  /* --- Tablet (≤760px) ya cubierto en cada componente --- */
+  @media(max-width:760px){
+    section{padding:64px 0}
+    .h1wrap{padding:64px 0 56px}
+    .h1sub{font-size:17px}
+    .appcard .foot{flex-wrap:wrap;gap:8px}
+    .appcard .tag{flex:1 1 100%}
+  }
+
+  /* --- Mobile (≤540px) --- */
+  @media(max-width:540px){
+    :root{--pad:20px}
+    section{padding:52px 0}
+    .h1wrap{padding:52px 0 44px}
+
+    /* nav */
+    .navin{padding:14px var(--pad)}
+    .brand .nm{font-size:14px;letter-spacing:.1em}
+    .navlinks a.cta{padding:8px 13px;font-size:11px}
+
+    /* hero */
+    .h1sub{font-size:16px;max-width:none}
+    .h1meta{flex-direction:column;align-items:stretch}
+    .h1meta .btn{justify-content:center}
+
+    /* section header */
+    .sechead{flex-direction:column;gap:4px;margin-bottom:32px}
+    .sechead .note{font-size:12px}
+
+    /* cards */
+    .appcard{padding:20px 18px 18px}
+    .appcard h3{font-size:18px}
+
+    /* dentalgrow */
+    .dg-lede{font-size:17px}
+    .dg-title{font-size:clamp(26px,7vw,40px)}
+
+    /* notas */
+    .post .ttl{font-size:17px}
+
+    /* sobre */
+    .about .lede{font-size:17px}
+
+    /* contacto */
+    .contact .lede{font-size:clamp(22px,6vw,32px)}
+
+    /* form */
+    form{padding:22px 18px}
+
+    /* footer */
+    .footin{flex-direction:column;gap:10px;align-items:flex-start}
+  }
+
+  /* --- Small mobile (≤380px) --- */
+  @media(max-width:380px){
+    :root{--pad:16px}
+    .brand .nm{display:none}
+    .navlinks a.cta{padding:8px 12px}
+    .appcard h3{font-size:16px}
+    .btn{font-size:13.5px;padding:12px 18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<nav id="nav">
+  <div class="navin">
+    <a class="brand" href="#top" aria-label="eri quiroz — inicio">
+      <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+      <span class="nm">eri quiroz</span>
+    </a>
+    <div class="navlinks">
+      <a href="#proyectos" class="hidesm">Proyectos</a>
+      <a href="#notas" class="hidesm">Notas</a>
+      <a href="#sobre" class="hidesm">Cómo trabajo</a>
+      <a href="#contacto" class="cta">Hablemos →</a>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ====================== HERO (v1 Editorial) ====================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="h1wrap">
+      <div class="eyebrow reveal">Consultoría de producto · Crecimiento con IA</div>
+      <h1 class="display reveal">Ayudo a negocios que ya funcionan a crecer <em>sin depender</em> de que alguien lo recuerde todo.</h1>
+      <p class="h1sub reveal">Soy Erika Quiroz. Trabajo con dueños de negocio que tienen clientes, facturación y procesos que funcionan — pero saben que algo se está escapando. Diagnostico qué es, diseño el sistema que lo resuelve y lo implemento. Uso IA para avanzar rápido; el criterio lo pongo yo.</p>
+      <div class="h1meta reveal">
+        <a href="#proyectos" class="btn btn-pri">Ver mi trabajo <span class="arr">→</span></a>
+        <a href="#contacto" class="btn btn-sec">Hablemos</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== PROYECTOS ====================== -->
+<section id="proyectos">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <h2>Trabajo</h2>
+      <span class="note">Proyectos reales, en distintas etapas.</span>
+    </div>
+    <div class="apps">
+
+      <article class="appcard reveal">
+        <div class="top">
+          <span class="appthumb">
+            <svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+          </span>
+          <span class="badge"><span class="dot"></span>Live</span>
+        </div>
+        <h3>Calculadora de fuga de ingresos para clínicas dentales</h3>
+        <p>Seis preguntas. Un número concreto. La calculadora estima cuánto ingreso está dejando de entrar cada mes por pacientes inactivos, presupuestos sin cerrar y no-shows — sin registro, sin formulario de ventas. El primer paso para entender el problema antes de hablar de soluciones.</p>
+        <div class="foot">
+          <span class="tag">Herramienta gratuita · Lead magnet · DentalGrow</span>
+          <a class="try" href="https://dentalgrowstack.com" target="_blank" rel="noopener">Usar la calculadora <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="appcard reveal">
+        <div class="top">
+          <span class="appthumb">
+            <svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+          </span>
+          <span class="badge badge-service"><span class="dot"></span>Servicio</span>
+        </div>
+        <h3>Reactivación de base de datos de pacientes</h3>
+        <p>Tu clínica ya tiene pacientes que dejaron de venir. Este servicio los contacta de forma sistemática — con el mensaje correcto, en el momento correcto — y los devuelve a la agenda. Sin publicidad, sin nuevos leads. Solo recuperar lo que ya existe. Valor mensual fijo, sin permanencia.</p>
+        <div class="foot">
+          <span class="tag">Reactivación · Base de datos · Mensual</span>
+          <a class="try" href="#contacto">Cómo funciona <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="appcard reveal">
+        <div class="top">
+          <span class="appthumb">
+            <svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+          </span>
+          <span class="badge badge-service"><span class="dot"></span>High ticket</span>
+        </div>
+        <h3>Sistema comercial completo para clínicas dentales</h3>
+        <p>Implementación del proceso comercial completo: desde el primer contacto con un lead hasta la agenda confirmada y el seguimiento post-consulta. Todo automatizado, configurado para la operación real de tu clínica. Incluye reactivación de base de datos activa.</p>
+        <div class="foot">
+          <span class="tag">GHL · Automatización · Implementación</span>
+          <a class="try" href="#contacto">Ver el detalle <span class="arr">→</span></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================== DENTALGROW ====================== -->
+<section id="dentalgrow">
+  <div class="wrap">
+    <div class="dg-header reveal">
+      <div class="eyebrow" style="margin-bottom:18px">Una apuesta vertical</div>
+      <h2 class="dg-title">DentalGrow</h2>
+    </div>
+    <div class="dg-body">
+      <div class="reveal">
+        <p class="dg-lede">Un ecosistema de servicios diseñado específicamente para clínicas dentales que quieren crecer con lo que ya tienen.</p>
+      </div>
+      <div class="dg-right reveal">
+        <p>Empezamos por medir el problema con precisión. Después, según el momento de tu clínica, activamos el servicio que tiene más sentido: reactivar la base existente, mejorar el retorno de tu publicidad actual, o implementar el proceso comercial completo. Todo corre sobre GHL y se adapta a tu operación — no al revés.</p>
+        <div class="dg-cta">
+          <a href="https://dentalgrowstack.com" target="_blank" rel="noopener" class="btn btn-sec">Conocer DentalGrow <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== NOTAS ======================
+     Estos 4 posts son borradores/placeholders (aún no escritos).
+     Para publicar uno: cambia la clase "post-soon" por nada, vuelve a poner
+     href="#" por la URL real (o un #ancla si el texto va en esta misma página),
+     y reemplaza el texto de .read por algo como "6 min →".
+====================================================== -->
+<section id="notas">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <h2>Notas</h2>
+      <span class="note">Cómo pienso el problema, en voz alta.</span>
+    </div>
+    <div class="posts">
+
+      <div class="post post-soon reveal">
+        <span class="date">Próximamente</span>
+        <span>
+          <span class="ttl">El patrón de pérdida que casi ningún negocio ve</span>
+          <span class="ex">Los clientes que se van en silencio cuestan más que los que nunca llegaron. Cómo identificarlo y medirlo.</span>
+        </span>
+        <span class="read">Pronto</span>
+      </div>
+
+      <div class="post post-soon reveal">
+        <span class="date">Próximamente</span>
+        <span>
+          <span class="ttl">Por qué tener procesos no es lo mismo que tener un sistema</span>
+          <span class="ex">La diferencia entre hacer las cosas bien y tener una estructura que funciona sin que nadie tenga que recordar todo.</span>
+        </span>
+        <span class="read">Pronto</span>
+      </div>
+
+      <div class="post post-soon reveal">
+        <span class="date">Próximamente</span>
+        <span>
+          <span class="ttl">Cómo convertir una intuición de negocio en un número accionable</span>
+          <span class="ex">El paso que más se saltea antes de construir cualquier solución.</span>
+        </span>
+        <span class="read">Pronto</span>
+      </div>
+
+      <div class="post post-soon reveal">
+        <span class="date">Próximamente</span>
+        <span>
+          <span class="ttl">Dónde entra la IA y dónde entro yo</span>
+          <span class="ex">Cómo estructuro el trabajo para que la velocidad no le gane al criterio.</span>
+        </span>
+        <span class="read">Pronto</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CÓMO TRABAJO ====================== -->
+<section id="sobre">
+  <div class="wrap">
+    <div class="about">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:24px">Cómo trabajo</div>
+        <p class="lede">Primero entiendo el problema. Después diseño la solución. En ese orden, siempre.</p>
+        <p>Trabajo con personas que no tienen por qué saber de tecnología ni de automatización. Mi trabajo es hacer que eso no importe: tomo un problema de negocio, lo diagnostico con datos, diseño un sistema que lo resuelve y lo implemento. El detalle de cómo lo hago está en las notas.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <span class="n">01</span>
+          <span>
+            <span class="st">Diagnóstico</span>
+            <div class="sd">Entendemos qué está pasando y cuánto cuesta. Sin diagnóstico, todo lo demás es suposición.</div>
+          </span>
+        </div>
+        <div class="step">
+          <span class="n">02</span>
+          <span>
+            <span class="st">Diseño</span>
+            <div class="sd">Definimos qué hay que construir y cómo encaja con lo que ya existe.</div>
+          </span>
+        </div>
+        <div class="step">
+          <span class="n">03</span>
+          <span>
+            <span class="st">Implementación</span>
+            <div class="sd">Lo ponemos en marcha con la operación real, no en un entorno de prueba.</div>
+          </span>
+        </div>
+        <div class="step">
+          <span class="n">04</span>
+          <span>
+            <span class="st">Seguimiento</span>
+            <div class="sd">Medimos si funciona y ajustamos. Respondo por el resultado, no por la entrega.</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTACTO ====================== -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:22px">Contacto</div>
+        <p class="lede">¿Tienes la sensación de que tu negocio podría estar funcionando mejor? Podemos revisar eso juntos.</p>
+        <div class="ways">
+          <div class="way">
+            <span class="ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
+            <span>Escríbeme a <a href="mailto:eri.quiroz@gmail.com">eri.quiroz@gmail.com</a></span>
+          </div>
+          <!-- "Agenda 20 min" se ocultó hasta tener un link real de Calendly/Cal.com.
+               Para reactivarlo: descomenta este bloque y pon la URL en el href. -->
+          <!--
+          <div class="way">
+            <span class="ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+            </span>
+            <span>O <a href="#" target="_blank" rel="noopener">agenda 20 min</a> en mi calendario</span>
+          </div>
+          -->
+        </div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/eriquiroz/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/dentalgrowstack" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://github.com/eriquiroz" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <form id="contactForm" class="reveal">
+        <!-- Access key de Web3Forms: ver instrucciones en README del repo -->
+        <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="subject" value="Nuevo mensaje desde eriquiroz.com">
+        <div class="field">
+          <label for="nm">Nombre</label>
+          <input id="nm" name="name" type="text" placeholder="Tu nombre" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="em">Email</label>
+          <input id="em" name="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="ms">Mensaje</label>
+          <textarea id="ms" name="message" placeholder="Cuéntame en una o dos líneas qué tienes en mente." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-pri">Enviar <span class="arr">→</span></button>
+        <p class="formnote" id="formNote">Te respondo en menos de 24 horas.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer>
+  <div class="wrap footin">
+    <a class="brand" href="#top">
+      <svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+      <span class="nm">eri quiroz</span>
+    </a>
+    <span class="cr">© 2026 eriquiroz.com — pensado, no generado.</span>
+  </div>
+</footer>
+
+<script>
+  // nav border al hacer scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, {passive: true});
+  onScroll();
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, {threshold: .1, rootMargin: '0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // formulario de contacto -> Web3Forms
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    note.textContent = 'Enviando…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Accept': 'application/json'},
+        body: new FormData(form)
+      });
+      const json = await res.json();
+      if (json.success) {
+        note.textContent = 'Gracias — te respondo en menos de 24 horas.';
+        form.reset();
+      } else {
+        note.textContent = 'Algo salió mal. Escríbeme directo a eri.quiroz@gmail.com';
+      }
+    } catch (err) {
+      note.textContent = 'Algo salió mal. Escríbeme directo a eri.quiroz@gmail.com';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
