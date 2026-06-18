@@ -175,7 +175,9 @@
   .field textarea{resize:vertical;min-height:104px}
   form .btn-pri{width:100%;justify-content:center;margin-top:4px}
   form .btn-pri:disabled{opacity:.6;cursor:default;transform:none}
-  .formnote{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+  .formnote{font-size:12px;color:var(--muted);margin-top:14px;text-align:center;transition:color .15s}
+  .formnote.ok{font-size:14px;font-weight:600;color:#3f7a4f}
+  .formnote.err{font-size:14px;font-weight:600;color:#a8412f}
   @media(max-width:760px){.contact{grid-template-columns:1fr;gap:36px}}
 
   /* ---------- footer ---------- */
@@ -499,7 +501,7 @@
       </div>
       <form id="contactForm" class="reveal">
         <!-- Access key de Web3Forms: ver instrucciones en README del repo -->
-        <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="access_key" value="48c71e32-71e7-42de-aef1-5e02b1bb3bf7">
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="subject" value="Nuevo mensaje desde eriquiroz.com">
         <div class="field">
@@ -557,22 +559,27 @@
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
+    note.className = 'formnote';
     note.textContent = 'Enviando…';
     try {
+      const data = Object.fromEntries(new FormData(form).entries());
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {'Accept': 'application/json'},
-        body: new FormData(form)
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(data)
       });
       const json = await res.json();
       if (json.success) {
-        note.textContent = 'Gracias — te respondo en menos de 24 horas.';
+        note.className = 'formnote ok';
+        note.textContent = 'Gracias por escribirme. Te respondo en menos de 24 horas.';
         form.reset();
       } else {
-        note.textContent = 'Algo salió mal. Escríbeme directo a eri.quiroz@gmail.com';
+        note.className = 'formnote err';
+        note.textContent = 'No se pudo enviar. Escríbeme directo a eri.quiroz@gmail.com';
       }
     } catch (err) {
-      note.textContent = 'Algo salió mal. Escríbeme directo a eri.quiroz@gmail.com';
+      note.className = 'formnote err';
+      note.textContent = 'No se pudo enviar. Escríbeme directo a eri.quiroz@gmail.com';
     } finally {
       btn.disabled = false;
     }
