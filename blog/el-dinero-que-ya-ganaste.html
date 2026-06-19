@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El dinero que ya ganaste y no sabes que perdiste — eri quiroz</title>
+<meta name="description" content="Hay una pregunta que casi ningún dueño de clínica se hace con un número concreto: ¿cuánto dinero salió por la puerta de atrás?">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f4f1ea'/%3E%3Ccircle cx='48' cy='48' r='30' fill='none' stroke='%231a1a1a' stroke-width='8'/%3E%3Ccircle cx='71' cy='71' r='6.5' fill='%231a1a1a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --beige:#f4f1ea; --beige-2:#efe9df; --paper:#faf8f3;
+    --ink:#1a1a1a; --graphite:#3a3a3a; --muted:#7a7266;
+    --sand:#c9bca8; --sand-2:#e8e2d6; --deep:#a8967d; --line:#e4ddd0;
+    --maxw:1080px; --pad:48px;
+  }
+  html{background:var(--beige);scroll-behavior:smooth}
+  body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--graphite);
+    background:var(--beige);line-height:1.6;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility}
+  ::selection{background:var(--sand);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--deep)}
+  h1,h2,h3{color:var(--ink);font-weight:500;letter-spacing:-.01em}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:40;background:rgba(244,241,234,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+  nav.stuck{border-color:var(--line)}
+  .navin{max-width:var(--maxw);margin:0 auto;padding:18px var(--pad);
+    display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .nm{font-size:16px;letter-spacing:.14em;font-weight:400;color:var(--ink)}
+  .navlinks{display:flex;align-items:center;gap:30px}
+  .navlinks a{font-size:14px;color:var(--graphite);transition:color .15s}
+  .navlinks a:hover{color:var(--ink)}
+  .navlinks a.cta{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;
+    border:1.5px solid var(--ink);color:var(--ink);padding:9px 16px;border-radius:9px;
+    transition:background .18s,color .18s}
+  .navlinks a.cta:hover{background:var(--ink);color:var(--beige)}
+  @media(max-width:680px){.navlinks .hidesm{display:none}}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;
+    padding:13px 22px;border-radius:10px;border:1.5px solid transparent;cursor:pointer;
+    white-space:nowrap;transition:transform .16s,background .16s,border-color .16s,color .16s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn .arr{font-family:'JetBrains Mono',monospace;font-size:13px}
+  .btn-pri{background:var(--ink);color:var(--beige)}
+  .btn-pri:hover{background:#000}
+  .btn-sec{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-sec:hover{background:var(--ink);color:var(--beige)}
+
+  /* ---------- article ---------- */
+  .back{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);
+    display:inline-flex;align-items:center;gap:7px;transition:color .15s}
+  .back:hover{color:var(--ink)}
+  article{padding:64px 0 96px}
+  .article-meta{margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+  .article-title{margin-top:18px;font-size:clamp(30px,4.6vw,46px);line-height:1.12;
+    font-weight:400;letter-spacing:-.02em;max-width:22ch}
+  .article-body{margin-top:44px;max-width:64ch}
+  .article-body h2{font-size:24px;margin-top:48px;margin-bottom:18px}
+  .article-body p{font-size:16.5px;color:var(--graphite);margin-top:18px;line-height:1.7}
+  .article-body p:first-of-type{margin-top:0}
+  .article-body strong{color:var(--ink);font-weight:600}
+  .article-body hr{border:none;border-top:1px solid var(--line);margin:40px 0}
+  .article-cta{margin-top:14px}
+  .article-closing{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+  .article-closing p{font-size:15.5px;color:var(--graphite);max-width:54ch}
+  .article-closing .btn{margin-top:18px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:46px 0 70px}
+  .footin{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .footin .brand .nm{font-size:14px}
+  footer .cr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+
+  @media(max-width:540px){
+    :root{--pad:20px}
+    .navin{padding:14px var(--pad)}
+    .brand .nm{font-size:14px;letter-spacing:.1em}
+    .navlinks a.cta{padding:8px 13px;font-size:11px}
+    article{padding:44px 0 64px}
+    .article-body h2{font-size:20px}
+    .footin{flex-direction:column;gap:10px;align-items:flex-start}
+  }
+  @media(max-width:380px){
+    :root{--pad:16px}
+    .brand .nm{display:none}
+    .navlinks a.cta{padding:8px 12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<nav id="nav">
+  <div class="navin">
+    <a class="brand" href="../index.html#top" aria-label="eri quiroz — inicio">
+      <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+      <span class="nm">eri quiroz</span>
+    </a>
+    <div class="navlinks">
+      <a href="../index.html#proyectos" class="hidesm">Proyectos</a>
+      <a href="../index.html#blog" class="hidesm">Blog</a>
+      <a href="../index.html#sobre" class="hidesm">Cómo trabajo</a>
+      <a href="../index.html#contacto" class="cta">Hablemos →</a>
+    </div>
+  </div>
+</nav>
+
+<article>
+  <div class="wrap">
+    <a class="back" href="../index.html#blog">← Volver al blog</a>
+    <div class="eyebrow" style="margin-top:24px">Blog</div>
+    <h1 class="article-title">El dinero que ya ganaste y no sabes que perdiste</h1>
+    <p class="article-meta">6 min · Junio 2026</p>
+
+    <div class="article-body">
+      <p>Hay una pregunta que casi ningún dueño de clínica se hace con un número concreto.</p>
+
+      <p>No "¿cómo traigo más pacientes?" — esa sí se hace. Hay presupuesto de publicidad, hay campañas, hay alguien que revisa cuántos leads llegaron este mes.</p>
+
+      <p>La pregunta que no se hace es la otra: <strong>¿cuánto dinero salió por la puerta de atrás?</strong></p>
+
+      <p>No el dinero que nunca entró. El que ya estaba adentro y se fue igual.</p>
+
+      <hr>
+
+      <h2>Cuatro formas de perder lo que ya tienes</h2>
+
+      <p>Cuando empecé a revisar la operación de clínicas dentales con este ángulo, encontré que la fuga ocurre siempre por las mismas cuatro vías.</p>
+
+      <p><strong>Inasistencias y no-shows.</strong> Un paciente agenda, no llega, y nadie lo vuelve a llamar. El box quedó vacío. Esa hora no se recupera. Si pasa tres veces por semana en una clínica mediana, el número mensual es considerable — y casi nunca está calculado.</p>
+
+      <p><strong>Presupuestos sin seguimiento.</strong> El dentista presentó el plan de tratamiento, el paciente dijo "lo pienso" y se fue. Nadie lo llamó a los cinco días. Nadie le escribió a los diez. El presupuesto quedó abierto en el sistema o en un papel y eventualmente dejó de existir. En clínicas que trabajan con tratamientos de ortodoncia, implantes o rehabilitación oral, este es el punto de mayor pérdida.</p>
+
+      <p><strong>Tratamientos incompletos.</strong> El paciente empezó el tratamiento, pagó la primera cuota, y después no volvió a terminar. Quedó a mitad del proceso — por razones que muchas veces no tienen que ver con la clínica, pero que nadie siguió de cerca.</p>
+
+      <p><strong>Pacientes que simplemente no volvieron.</strong> Vinieron una vez, dos, tres veces. Confiaron. Y en algún momento dejaron de volver. No porque se hayan enojado — sino porque nadie los llamó, nadie los recordó, nadie les preguntó cómo estaban. Y eventualmente encontraron otra clínica o simplemente postergaron la salud dental indefinidamente.</p>
+
+      <p>Estas cuatro cosas pasan en casi todas las clínicas. La pregunta no es si te pasan a ti. Es cuánto te están costando.</p>
+
+      <hr>
+
+      <h2>Por qué el número importa más que la intuición</h2>
+
+      <p>Cuando le pregunto a un dueño de clínica si tiene pacientes inactivos, la respuesta siempre es sí. Cuando le pregunto cuántos, la respuesta es "bastantes" o "no sé exactamente."</p>
+
+      <p>Eso es un problema.</p>
+
+      <p>No porque la intuición esté equivocada — generalmente no lo está. Sino porque sin el número, no hay forma de priorizar. Si no sabes cuánto te están costando los no-shows versus los presupuestos sin cerrar, no puedes decidir qué resolver primero. Tiras al aire.</p>
+
+      <p>Y cuando tiras al aire, terminas comprando herramientas o servicios que resuelven el problema equivocado — o el problema correcto en el orden equivocado.</p>
+
+      <p>El número convierte una intuición en una decisión.</p>
+
+      <hr>
+
+      <h2>Cómo construí la calculadora</h2>
+
+      <p>Construí una herramienta que hace exactamente eso: toma doce datos de tu clínica — los que cualquier dueño tiene en la cabeza o puede revisar en cinco minutos — y devuelve una estimación de cuánto dinero se está perdiendo por mes.</p>
+
+      <p>No usa datos perfectos. Usa los datos que tienes, y donde no tienes el dato exacto, trabaja con benchmarks conservadores del mercado dental. Los números salen bajos de forma intencionada — porque prefiero que te sorprendas hacia arriba a que creas que exageré.</p>
+
+      <p>Con los números que me han dado clínicas pequeñas con tratamientos de bajo ticket, la fuga mensual típica supera los USD 3.000. En clínicas que trabajan con implantes, ortodoncia o rehabilitación oral, la cifra se dispara — porque cada presupuesto sin cerrar o cada paciente que no volvió vale mucho más.</p>
+
+      <p>No te pide registro. No te pide nada para ver el resultado. Doce preguntas, un número.</p>
+
+      <p>El punto no es que te asustes con el número. El punto es que, por primera vez, tengas el número. Y que a partir de ahí, la conversación sobre qué hacer sea mucho más concreta.</p>
+
+      <hr>
+
+      <h2>La pregunta que vale hacerse hoy</h2>
+
+      <p>Si pudieras saber exactamente cuánto dinero salió por la puerta trasera de tu clínica este mes — de pacientes que ya confiaron en ti y no volvieron, de presupuestos que quedaron sin respuesta, de horas que nadie llenó — ¿cambiaría algo en cómo estás priorizando tu energía ahora mismo?</p>
+
+      <p>Para la mayoría de los dueños de clínica con los que hablo, la respuesta es sí.</p>
+
+      <p>Eso es lo que mide la calculadora. Y es el primer paso antes de hablar de cualquier solución.</p>
+
+      <div class="article-cta">
+        <a class="btn btn-pri" href="https://dentalgrowstack.com" target="_blank" rel="noopener">Calcular la fuga de mi clínica <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <div class="article-closing">
+      <p>Trabajo con clínicas dentales que quieren crecer con lo que ya tienen. Si esto te hace sentido, podemos revisar juntos dónde están los puntos ciegos en tu operación.</p>
+      <a class="btn btn-sec" href="../index.html#contacto">Hablemos <span class="arr">→</span></a>
+    </div>
+  </div>
+</article>
+
+<!-- ====================== FOOTER ====================== -->
+<footer>
+  <div class="wrap footin">
+    <a class="brand" href="../index.html#top">
+      <svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/><circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/></svg>
+      <span class="nm">eri quiroz</span>
+    </a>
+    <span class="cr">© 2026 eriquiroz.com — pensado, no generado.</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, {passive: true});
+  onScroll();
+</script>
+
+</body>
+</html>
