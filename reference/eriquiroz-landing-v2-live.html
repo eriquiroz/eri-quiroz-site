@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Erika Quiroz — Te dejo funcionando lo que hoy depende de que alguien se acuerde</title>
-<meta name="description" content="Contesto a quien te escribe, sigo tus presupuestos y traigo de vuelta a los clientes que dejaron de venir. Negocios de servicios en general. Tres semanas, precio cerrado antes de partir.">
+<title>Erika Quiroz — Te dejo funcionando el sistema que recupera tus clientes</title>
+<meta name="description" content="Contesto a tus clientes, persigo tus presupuestos y traigo de vuelta a los que no volvieron. Funcionando en tres semanas, con precio cerrado.">
 <link rel="icon" href="assets/eriquiroz-favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,13 +63,11 @@
     border-bottom:1px solid transparent;
   }
   header.scrolled{background:rgba(244,241,234,.88);border-color:var(--line);padding:13px 0}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none}
-  .brand .nm{font-size:16px;font-weight:500;letter-spacing:-.005em;color:var(--ink)}
-  header nav{display:flex;align-items:center;gap:26px}
-  header nav a.navlink{font-size:13.5px;color:var(--muted);text-decoration:none;display:none;transition:color .15s ease}
-  header nav a.navlink:hover{color:var(--ink)}
-  @media(min-width:900px){header nav a.navlink{display:inline-block}}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .brand .nm{font-size:15px;font-weight:500;letter-spacing:.14em;color:var(--ink)}
+  header nav{display:flex;align-items:center;gap:22px}
+  header nav a.navlink{font-size:13.5px;color:var(--muted);text-decoration:none;display:none}
 
   /* ============ HERO ============ */
   .hero{position:relative;padding:clamp(72px,13vw,148px) 0 clamp(64px,9vw,104px);overflow:hidden}
@@ -77,16 +75,14 @@
     position:absolute;top:-6%;right:-8%;width:min(56vw,620px);height:min(56vw,620px);
     opacity:.055;pointer-events:none;z-index:0;
   }
-  .hero-flex{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(32px,6vw,72px);flex-wrap:wrap}
-  .hero-copy{flex:1 1 460px;max-width:640px}
-  .hero-greet{font-size:clamp(19px,1.7vw,22px);font-weight:500;color:var(--ink);margin-bottom:22px}
+  .hero-inner{position:relative;z-index:1;max-width:760px}
   .hero-pretitle{
     font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--graphite);
     margin-bottom:22px;letter-spacing:.01em;
   }
   h1.display{
     font-size:clamp(2.15rem,4.6vw,3.7rem);font-weight:500;line-height:1.1;
-    letter-spacing:-.015em;color:var(--ink);max-width:16ch;
+    letter-spacing:-.015em;color:var(--ink);max-width:15ch;
   }
   h1.display .hl{position:relative;white-space:nowrap}
   h1.display .hl::after{
@@ -98,14 +94,6 @@
     max-width:46ch;
   }
   .hero-ctas{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
-  .hero-note{font-size:13.5px;color:var(--muted);margin-top:24px;max-width:48ch;line-height:1.55}
-  .hero-photo{flex:0 1 380px;min-width:230px;display:flex;justify-content:center}
-  .hero-photo-frame{
-    position:relative;width:100%;max-width:380px;aspect-ratio:4/5;border-radius:var(--r-md);
-    overflow:hidden;background:linear-gradient(160deg,var(--paper),var(--sand-2));
-    border:1px solid var(--sand);box-shadow:0 24px 48px rgba(26,26,26,.14);
-  }
-  .hero-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 14%}
 
   /* ============ SECTION HEADS ============ */
   .shead{max-width:640px;margin-bottom:56px}
@@ -116,33 +104,11 @@
     display:grid;grid-template-columns:120px 1fr;gap:28px;padding:38px 0;
     border-top:1px solid var(--line);
   }
-  .fuga-row:last-of-type{border-bottom:1px solid var(--line)}
+  .fuga-row:last-child{border-bottom:1px solid var(--line)}
   .fuga-idx{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--muted);font-weight:500;padding-top:4px}
   .fuga-body h3{font-size:1.28rem;margin-bottom:10px}
   .fuga-body p{max-width:60ch}
   .fuga-ex{margin-top:12px;font-size:13.5px;color:var(--muted);font-style:italic;max-width:60ch}
-  .fuga-cta{margin-top:44px;display:flex;flex-direction:column;gap:12px}
-  .fuga-cta a.big{
-    display:inline-flex;align-items:center;gap:8px;font-size:clamp(1.05rem,1.5vw,1.2rem);
-    color:var(--ink);font-weight:500;text-decoration:none;transition:color .15s ease;
-  }
-  .fuga-cta a.big:hover{color:var(--deep)}
-  .fuga-cta .dental{font-size:13px;color:var(--muted)}
-  .fuga-cta .dental a{border-bottom:1px solid var(--deep);text-decoration:none}
-
-  /* ============ QUIEN SOY ============ */
-  .who-grid{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start}
-  .who-photo{
-    width:200px;height:200px;border-radius:50%;overflow:hidden;flex:none;
-    border:1px solid var(--sand);box-shadow:0 16px 32px rgba(26,26,26,.14);
-  }
-  .who-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
-  .who-body p{max-width:62ch;margin-bottom:16px;font-size:15.5px}
-  .who-signoff{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:15px}
-  .who-signoff .nm{color:var(--ink);font-weight:500;display:block}
-  .who-signoff a{display:inline-block;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:13.5px;text-decoration:none}
-  .who-signoff a:hover{color:var(--deep)}
-  @media(max-width:680px){.who-grid{grid-template-columns:1fr}.who-photo{width:140px;height:140px}}
 
   /* ============ ENTREGABLES ============ */
   .ent-row{
@@ -176,20 +142,17 @@
     margin-top:48px;background:var(--ink);color:var(--sand-2);border-radius:var(--r-md);
     padding:clamp(28px,4vw,44px);
   }
-  .price-block .headline{font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--beige);font-weight:500}
   .price-block p{font-size:clamp(1.02rem,1.6vw,1.2rem);color:var(--beige);max-width:56ch;line-height:1.55}
-  .price-block .fine{margin-top:16px;font-size:14.5px;color:var(--sand-2);opacity:.85}
-  .ph{border-bottom:2px dashed var(--sand);padding-bottom:1px}
-  .price-block .ph{border-bottom:2px dashed rgba(232,226,214,.55);color:var(--beige)}
+
+  /* ============ NO HAGO ============ */
+  ul.nolist{list-style:none;max-width:720px}
+  ul.nolist li{
+    border-left:3px solid var(--sand);padding:6px 0 6px 22px;margin-bottom:22px;font-size:15.5px;
+  }
+  ul.nolist li strong{color:var(--ink)}
 
   /* ============ CASOS ============ */
-  .casos-lede{max-width:62ch;color:var(--graphite);margin-bottom:44px}
-  .casos-counters{
-    display:flex;flex-wrap:wrap;gap:18px 44px;padding:22px 0 30px;margin-bottom:8px;
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  }
-  .casos-counters .num{font-family:'JetBrains Mono',monospace;font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--ink);font-weight:500}
-  .casos-counters .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-top:4px}
+  .casos-lede{max-width:60ch;color:var(--graphite);margin-bottom:44px}
   .caso-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
   .caso{
     display:flex;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);
@@ -203,21 +166,6 @@
     .caso:nth-child(odd){padding-right:0;border-right:none}
     .caso:nth-child(even){padding-left:0}
   }
-
-  /* ============ PREGUNTAS (FAQ) ============ */
-  .faq{max-width:820px;border-top:1px solid var(--line)}
-  .faq details{border-bottom:1px solid var(--line)}
-  .faq summary{
-    display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;
-    font-size:1.05rem;color:var(--ink);font-weight:500;cursor:pointer;list-style:none;
-  }
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary .ic{
-    font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--deep);
-    transition:transform .25s ease;flex:none;
-  }
-  .faq details[open] .ic{transform:rotate(45deg)}
-  .faq p{margin:0 0 22px;max-width:66ch;color:var(--graphite)}
 
   /* ============ ATELIER ============ */
   .atelier-card{
@@ -247,25 +195,23 @@
   .field textarea:focus,.field input:focus{outline:2px solid var(--deep);outline-offset:1px;border-color:transparent}
   .form-note{font-size:12.5px;color:var(--muted)}
 
+  /* ============ QUIEN SOY ============ */
+  .who-grid{display:grid;grid-template-columns:180px 1fr;gap:44px;align-items:start}
+  .who-mono{
+    width:120px;height:120px;border-radius:var(--r-md);background:var(--ink);color:var(--beige);
+    display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:15px;
+    letter-spacing:.14em;
+  }
+  .who-body p{max-width:62ch;margin-bottom:16px;font-size:15.5px}
+  @media(max-width:680px){.who-grid{grid-template-columns:1fr}}
+
   /* ============ CIERRE ============ */
   .close-section{background:var(--ink);color:var(--sand-2)}
   .close-section .eyebrow{color:var(--sand)}
   .close-section h2{color:var(--beige);font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:16ch;line-height:1.15}
   .close-section p{color:#cdc4b6;max-width:52ch;margin-top:20px;font-size:15.5px}
   .close-ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;align-items:center}
-  .close-email{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--sand-2)}
-  .close-email a{text-decoration:none}
-  .close-email a:hover{color:var(--beige)}
-  .close-form-wrap{margin-top:52px;padding-top:40px;border-top:1px solid rgba(232,226,214,.16);max-width:460px}
-  .close-form-wrap .mini{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);display:block;margin-bottom:20px}
-  .close-form{display:grid;gap:16px}
-  .close-section .field label{color:var(--sand)}
-  .close-section .field textarea,.close-section .field input{background:rgba(244,241,234,.07);border:1px solid rgba(232,226,214,.22);color:var(--beige)}
-  .close-section .field textarea::placeholder,.close-section .field input::placeholder{color:rgba(244,241,234,.38)}
-  .close-section .field textarea:focus,.close-section .field input:focus{outline:2px solid var(--sand);outline-offset:1px;border-color:transparent}
-  .close-form .form-note{color:rgba(244,241,234,.55);margin-top:2px}
-  .close-form .form-note.ok{color:#a8d4ae}
-  .close-form .form-note.err{color:#e3a8a3}
+  .wa-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--sand-2);text-decoration:none;border-bottom:1px solid rgba(232,226,214,.35)}
 
   /* ============ DIVIDER ORNAMENT ============ */
   .ornament{display:flex;justify-content:center;padding:0}
@@ -275,7 +221,7 @@
   footer{padding:44px 0;border-top:1px solid var(--line)}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   footer .fbrand{display:flex;align-items:center;gap:10px}
-  footer .fbrand .nm{font-size:14.5px;color:var(--ink)}
+  footer .fbrand .nm{font-size:13.5px;letter-spacing:.12em;color:var(--ink)}
   footer .fnote{font-size:12.5px;color:var(--muted)}
 
   /* ============ REVEAL ============ */
@@ -308,14 +254,9 @@
         <circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/>
         <circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/>
       </svg>
-      <span class="nm">Erika Quiroz</span>
+      <span class="nm mono">ERIKA QUIROZ</span>
     </a>
     <nav>
-      <a class="navlink" href="#fugas">Fugas</a>
-      <a class="navlink" href="#quien-soy">Quién soy</a>
-      <a class="navlink" href="#semanas">Cómo trabajo</a>
-      <a class="navlink" href="#atelier">Atelier</a>
-      <a class="navlink" href="blog/el-dinero-que-ya-ganaste.html">Blog</a>
       <a class="btn btn-sec btn-sm" href="#contacto">Conversemos</a>
     </nav>
   </div>
@@ -331,21 +272,13 @@
         from="0 48 48" to="360 48 48" dur="46s" repeatCount="indefinite"/>
     </g>
   </svg>
-  <div class="wrap hero-flex">
-    <div class="hero-copy">
-      <p class="hero-greet">Hola, soy Erika.</p>
-      <h1 class="display">Te dejo funcionando lo que hoy depende de que alguien <span class="hl">se acuerde</span>.</h1>
-      <p class="h1sub">Un sistema que contesta a quien te escribe, hace seguimiento a los presupuestos que entregaste y trae de vuelta a los clientes que dejaron de venir. Tres semanas, precio cerrado antes de partir.</p>
-      <div class="hero-ctas">
-        <a href="#contacto" class="btn btn-pri">Quiero saber cuánto estoy perdiendo</a>
-        <a href="#entregables" class="btn btn-sec">Primero cuéntame cómo funciona</a>
-      </div>
-      <p class="hero-note">La primera conversación es gratis y dura menos de una hora. Te lleves el trabajo conmigo o no, el diagnóstico es tuyo.</p>
-    </div>
-    <div class="hero-photo">
-      <div class="hero-photo-frame">
-        <img src="assets/images/erika-cutout.webp" alt="Erika Quiroz">
-      </div>
+  <div class="wrap hero-inner">
+    <p class="hero-pretitle mono">Soy Erika Quiroz, ingeniera.</p>
+    <h1 class="display">Te dejo <span class="hl">funcionando</span> el sistema que contesta a tus clientes, persigue tus presupuestos y trae de vuelta a los que no volvieron.</h1>
+    <p class="h1sub">En tres semanas. Con alcance, precio y plazo cerrados antes de empezar.</p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn btn-pri">Quiero saber cuánto estoy perdiendo</a>
+      <a href="#casos" class="btn btn-sec">Mira lo que he construido</a>
     </div>
   </div>
 </section>
@@ -386,51 +319,21 @@
         <p class="fuga-ex">Mantenciones que se pasan. Tratamientos con ciclo de cuatro meses. Familias que no renuevan y nadie lo detectó a tiempo.</p>
       </div>
     </div>
-
-    <div class="fuga-cta reveal">
-      <a class="big" href="#contacto">¿Cuál de las tres te suena más? Escríbeme y la revisamos con tus números. →</a>
-      <p class="dental">Si tienes una clínica dental, hay una calculadora que estima esto en números concretos. <a href="https://dentalgrowstack.com" target="_blank" rel="noopener">Calcular →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ QUIÉN SOY ============ -->
-<section class="alt" id="quien-soy">
-  <div class="wrap">
-    <div class="shead reveal">
-      <span class="eyebrow">Quién soy</span>
-    </div>
-    <div class="who-grid reveal">
-      <div class="who-photo">
-        <img src="assets/images/erika-cutout.webp" alt="Erika Quiroz">
-      </div>
-      <div class="who-body">
-        <p>Soy ingeniera civil industrial. Llevo quince años metida en operaciones y procesos — primero dentro de empresas, después por mi cuenta, construyendo lo que les faltaba.</p>
-        <p>Empecé a hacer esto porque me tocó ver el mismo cuadro muchas veces: negocios buenos, con clientes que vuelven y equipos que se esfuerzan, perdiendo plata en cosas que nadie alcanzaba a hacer. No por flojera. Por falta de tiempo y de algo que se acuerde por ellos.</p>
-        <p>No vendo software ni licencias, y no te dejo con una herramienta que tienes que aprender por tu cuenta. Construyo lo que tu negocio necesita, te lo dejo andando y te enseño a operarlo.</p>
-        <p>Trabajo con pocos clientes a la vez. Por eso puedo cerrar alcance, precio y plazo antes de empezar — y por eso a veces digo que no.</p>
-        <!-- pendiente: línea humana de Erika (una frase personal, sin relación con el trabajo) — ver PROJECT.md -->
-        <div class="who-signoff">
-          <span class="nm">Erika Quiroz — Santiago, Chile</span>
-          <a href="mailto:hola@eriquiroz.com">hola@eriquiroz.com</a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- ============ QUÉ TE DEJO FUNCIONANDO ============ -->
-<section id="entregables">
+<section class="alt" id="entregables">
   <div class="wrap">
     <div class="shead reveal">
-      <span class="eyebrow">Tres cosas quedan funcionando. Tres semanas. Precio cerrado.</span>
+      <span class="eyebrow">Tres entregables. Tres semanas. Precio cerrado.</span>
     </div>
 
     <div class="ent-row reveal">
       <div class="ent-idx">01</div>
       <div class="ent-body">
         <h3>Te dejo respondiendo</h3>
-        <p>Cuando alguien te escribe —a la hora que sea, por donde sea— recibe respuesta en segundos, con tu información y tu forma de hablar. Lo que no se puede resolver solo te llega ordenado y con contexto, no como una notificación más.</p>
+        <p>Contesto en segundos, a cualquier hora, en el canal donde te escriben, con tu información y tu forma de hablar. Lo que no se puede resolver solo, te llega clasificado y con contexto — no como una notificación más.</p>
       </div>
     </div>
 
@@ -438,7 +341,7 @@
       <div class="ent-idx">02</div>
       <div class="ent-body">
         <h3>Te dejo persiguiendo</h3>
-        <p>Cada presupuesto que entregas entra en un seguimiento que corre solo, con el ritmo que definamos. Nada vuelve a quedar en "lo voy a pensar" sin que alguien pregunte de nuevo.</p>
+        <p>Cada presupuesto que entregas entra en una secuencia de seguimiento que corre sola, con la cadencia que definimos juntas. Nada vuelve a quedarse en "lo voy a pensar" sin respuesta.</p>
       </div>
     </div>
 
@@ -446,7 +349,7 @@
       <div class="ent-idx">03</div>
       <div class="ent-body">
         <h3>Te dejo recuperando</h3>
-        <p>Ordeno tu base de clientes —esté en un cuaderno, una planilla o la cabeza de alguien— y la pongo a trabajar: avisos cuando toca volver, contacto a los que llevan tiempo sin aparecer.</p>
+        <p>Ordeno tu base de clientes y la pongo a trabajar: recordatorios por ciclo, reactivación de los que llevan tiempo sin volver, avisos en el momento correcto.</p>
       </div>
     </div>
 
@@ -454,15 +357,15 @@
       <h4>Además, incluido</h4>
       <ul class="qlist">
         <li>Un panel donde ves en vivo qué está entrando, qué se está siguiendo y cuánto recuperaste.</li>
-        <li>Le enseño a tu equipo a operarlo, para que no dependan de mí.</li>
-        <li>30 días de ajustes después de que queda andando.</li>
+        <li>Capacito a tu equipo para que lo opere sin depender de mí.</li>
+        <li>30 días de ajustes después de la puesta en marcha.</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ============ CÓMO SON LAS TRES SEMANAS ============ -->
-<section class="alt" id="semanas">
+<section id="semanas">
   <div class="wrap">
     <div class="shead reveal">
       <span class="eyebrow">Cómo son las tres semanas</span>
@@ -471,7 +374,7 @@
     <div class="reveal">
       <div class="wk-row">
         <div class="wk-label mono">SEMANA 1</div>
-        <div class="wk-body">Miro cómo funciona tu negocio hoy: por dónde te llegan los clientes, qué se pierde y en qué parte. Al terminar la semana tienes por escrito qué entra y qué queda fuera.</div>
+        <div class="wk-body">Reviso tu operación real: cómo te llegan hoy los clientes, qué se pierde y dónde. Al terminar la semana tienes por escrito qué entra y qué queda fuera.</div>
       </div>
       <div class="wk-row">
         <div class="wk-label mono">SEMANA 2</div>
@@ -479,7 +382,7 @@
       </div>
       <div class="wk-row">
         <div class="wk-label mono">SEMANA 3</div>
-        <div class="wk-body">Lo dejo andando, le enseño a tu equipo y ajusto en vivo.</div>
+        <div class="wk-body">Lo pongo en marcha, capacito a tu equipo y ajusto en vivo.</div>
       </div>
       <div class="wk-row">
         <div class="wk-label mono">DESPUÉS</div>
@@ -487,10 +390,24 @@
       </div>
 
       <div class="price-block">
-        <p class="headline">Desde <span class="ph">$______</span> + IVA, cerrado antes de empezar.</p>
-        <p class="fine">Te doy el precio en la primera conversación y queda por escrito. No cobro por hora. Lo que no está en el alcance escrito no lo cobro ni lo hago — si aparece algo nuevo, te paso un precio aparte y tú decides.</p>
+        <p>Te doy un precio cerrado en la primera conversación y queda por escrito antes de empezar. No cobro por hora, no hay extras, no hay sorpresas. Lo que no está en el alcance escrito, no lo cobro ni lo hago.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ LO QUE NO HAGO ============ -->
+<section class="alt2" id="no-hago">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Para que sepas exactamente qué estás comprando</span>
+    </div>
+    <ul class="nolist reveal">
+      <li><strong>No reemplazo a tu equipo.</strong> Respondo primero y filtro. Las conversaciones que importan siguen siendo tuyas.</li>
+      <li><strong>No invento respuestas.</strong> Trabajo solo con la información que tú apruebas.</li>
+      <li><strong>No hago publicidad.</strong> No te traigo clientes nuevos. Recupero los que ya llegaron y se estaban perdiendo.</li>
+      <li><strong>No dejo el alcance abierto.</strong> Todo lo que no esté en el documento que firmamos antes de empezar queda fuera, y lo cotizo aparte.</li>
+    </ul>
   </div>
 </section>
 
@@ -499,66 +416,19 @@
   <div class="wrap">
     <div class="shead reveal">
       <span class="eyebrow">Lo que he construido</span>
-      <p class="lede casos-lede">Casi todo lo que he hecho corre dentro de empresas que no publican con quién trabajan. Si quieres ver un caso completo —con nombre, con números y con lo que salió mal también— escríbeme y te lo muestro en la llamada.</p>
+      <p class="lede">Trabajo bajo confidencialidad, así que acá no vas a ver nombres. Lo que sí vas a ver es lo que construí.</p>
     </div>
-
-    <div class="casos-counters reveal">
-      <div><div class="num">15 años</div><div class="lbl">en operaciones y procesos</div></div>
-      <div><div class="num"><span class="ph">__</span> proyectos</div><div class="lbl">entregados y funcionando</div></div>
-      <div><div class="num"><span class="ph">__</span> rubros</div><div class="lbl">distintos</div></div>
-    </div>
-
     <div class="caso-grid reveal">
-      <div class="caso"><span class="caso-tag mono">01</span><span class="caso-nm">Chatbot en producción — atiende a toda hora y deriva a una persona cuando corresponde.</span></div>
-      <div class="caso"><span class="caso-tag mono">02</span><span class="caso-nm">Sistema comercial completo — captación, seguimiento y ficha de cliente en un solo lugar.</span></div>
-      <div class="caso"><span class="caso-tag mono">03</span><span class="caso-nm">Campañas activas — gestión y optimización de publicidad en marcha.</span></div>
-      <div class="caso"><span class="caso-tag mono">04</span><span class="caso-nm">Aplicación de licitaciones públicas — lee y analiza las bases automáticamente.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PREGUNTAS QUE ME HACEN ============ -->
-<section class="alt2" id="preguntas">
-  <div class="wrap">
-    <div class="shead reveal">
-      <span class="eyebrow">Preguntas que me hacen</span>
-    </div>
-    <!-- pendiente: confirmar con Erika las respuestas 5, 6 y 7 — contienen compromisos que Claude propuso sin confirmar, ver PROJECT.md -->
-    <div class="faq reveal">
-      <details>
-        <summary><span>¿Vas a reemplazar a mi equipo?</span><span class="ic">+</span></summary>
-        <p>No. Respondo primero y filtro. Las conversaciones que importan siguen siendo de ustedes.</p>
-      </details>
-      <details>
-        <summary><span>¿De dónde salen las respuestas?</span><span class="ic">+</span></summary>
-        <p>Solo de la información que tú apruebas. Si algo no está en ese material, no se inventa nada: se deriva a una persona.</p>
-      </details>
-      <details>
-        <summary><span>¿Me vas a traer clientes nuevos?</span><span class="ic">+</span></summary>
-        <p>No hago publicidad para captar. Recupero los que ya te llegaron y se estaban perdiendo. Si lo que necesitas es captación, te lo digo de frente y te derivo.</p>
-      </details>
-      <details>
-        <summary><span>¿Qué necesito tener listo antes de partir?</span><span class="ic">+</span></summary>
-        <p>Poco: por dónde te escriben hoy, tus precios o presupuestos tipo, y quién de tu equipo lo va a operar. El resto lo armo yo.</p>
-      </details>
-      <details>
-        <summary><span>¿Y si en tres semanas no está listo?</span><span class="ic">+</span></summary>
-        <p>El alcance se cierra antes de partir justamente para que eso no pase. Si el atraso es mío, lo termino igual sin cobrarte más.</p>
-      </details>
-      <details>
-        <summary><span>¿Qué pasa después de los 30 días?</span><span class="ic">+</span></summary>
-        <p>Queda tuyo y funcionando, operado por tu equipo. Si quieres que siga a cargo, lo conversamos aparte. No dejo nada amarrado a mí.</p>
-      </details>
-      <details>
-        <summary><span>¿Por qué no es más barato?</span><span class="ic">+</span></summary>
-        <p>Porque no te vendo una herramienta para que la configures tú. Construyo sobre tu operación, la pruebo con tus casos y te la dejo andando. Si lo que buscas es una licencia mensual barata, hay opciones mejores que yo y te las nombro.</p>
-      </details>
+      <div class="caso"><span class="caso-tag mono">01</span><span class="caso-nm">Chatbot en producción — atención 24/7 con derivación a humano cuando corresponde</span></div>
+      <div class="caso"><span class="caso-tag mono">02</span><span class="caso-nm">Sistema comercial completo — captación, seguimiento y CRM en un solo lugar</span></div>
+      <div class="caso"><span class="caso-tag mono">03</span><span class="caso-nm">Campañas activas — gestión y optimización de pauta en producción</span></div>
+      <div class="caso"><span class="caso-tag mono">04</span><span class="caso-nm">Aplicación de licitaciones públicas — lectura y análisis automatizado de bases</span></div>
     </div>
   </div>
 </section>
 
 <!-- ============ ATELIER DIGITAL ============ -->
-<section id="atelier">
+<section class="alt" id="atelier">
   <div class="wrap">
     <div class="atelier-card reveal">
       <div class="atelier-head">
@@ -567,7 +437,7 @@
       </div>
       <div class="atelier-body">
         <p>Hay empresas que ya responden bien, ya hacen seguimiento y ya tienen sus sistemas andando. Necesitan otra cosa: una consultoría a la medida, un producto digital propio, o automatización sobre lo que ya existe y nadie más se atreve a tocar.</p>
-        <p style="margin-top:14px">Eso lo trabajo en el Atelier. Proyectos únicos, definidos caso a caso, pocos a la vez.</p>
+        <p style="margin-top:14px">Eso lo trabajo en el Atelier. Proyectos únicos, alcance definido caso a caso, pocos a la vez.</p>
       </div>
       <p class="atelier-floor">Proyectos desde USD 1.500 <span class="mono">— evalúo cada proyecto antes de aceptarlo, no tomo todos.</span></p>
 
@@ -593,6 +463,23 @@
   </div>
 </section>
 
+<!-- ============ QUIÉN SOY ============ -->
+<section id="quien-soy">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Quién soy</span>
+    </div>
+    <div class="who-grid reveal">
+      <!-- Reemplaza este bloque por <img src="tu-foto.jpg" alt="Erika Quiroz"> cuando tengas la foto -->
+      <div class="who-mono" aria-hidden="true">EQ</div>
+      <div class="who-body">
+        <p>Soy ingeniera civil industrial. Llevo quince años en operaciones y procesos, y los últimos construyendo sistemas que resuelven cuellos de botella concretos en negocios reales.</p>
+        <p>No vendo software ni licencias, y no te dejo con una herramienta que tienes que aprender sola. Construyo lo que tu negocio necesita, te lo dejo funcionando y te enseño a operarlo. Trabajo con pocos clientes a la vez — por eso puedo cerrar alcance, precio y plazo antes de empezar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CIERRE ============ -->
 <section class="close-section" id="contacto">
   <div class="wrap">
@@ -601,32 +488,8 @@
     <p class="reveal">La primera conversación es una revisión de tus tres fugas con tus números, no con estimaciones genéricas. Es gratis y dura menos de una hora. Trabajes conmigo o no, el diagnóstico te lo llevas igual.</p>
     <div class="close-ctas reveal">
       <a href="mailto:hola@eriquiroz.com" class="btn btn-ghost-lt" style="background:var(--sand-2);color:var(--ink);border-color:transparent">Conversemos</a>
-    </div>
-    <p class="close-email reveal"><a href="mailto:hola@eriquiroz.com">hola@eriquiroz.com</a></p>
-
-    <div class="close-form-wrap reveal">
-      <span class="mini">O escríbeme directo</span>
-      <form class="close-form" id="contactForm">
-        <input type="hidden" name="access_key" value="48c71e32-71e7-42de-aef1-5e02b1bb3bf7">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="subject" value="Nuevo mensaje desde eriquiroz.com">
-        <div class="field">
-          <label for="cf-name">Nombre</label>
-          <input id="cf-name" name="name" type="text" placeholder="Tu nombre" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="cf-email">Email</label>
-          <input id="cf-email" name="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="cf-msg">Mensaje</label>
-          <textarea id="cf-msg" name="message" rows="3" placeholder="Cuéntame qué está pasando en tu negocio." required></textarea>
-        </div>
-        <div>
-          <button type="submit" class="btn btn-ghost-lt" style="background:var(--sand-2);color:var(--ink);border-color:transparent">Enviar mensaje</button>
-        </div>
-        <p class="form-note" id="cfNote">Te respondo en menos de 24 horas.</p>
-      </form>
+      <!-- reemplaza 56900000000 por tu número real con código de país, sin + ni espacios -->
+      <a href="https://wa.me/56900000000" target="_blank" rel="noopener" class="wa-link">o escríbeme por WhatsApp →</a>
     </div>
   </div>
 </section>
@@ -639,9 +502,8 @@
         <circle cx="48" cy="48" r="30" fill="none" stroke="#1a1a1a" stroke-width="8"/>
         <circle cx="71" cy="71" r="6.5" fill="#1a1a1a"/>
       </svg>
-      <span class="nm">Erika Quiroz</span>
+      <span class="nm mono">ERIKA QUIROZ</span>
     </div>
-    <a class="fnote mono" href="blog/el-dinero-que-ya-ganaste.html" style="text-decoration:none">Blog →</a>
     <span class="fnote mono">© 2026 eriquiroz.com — hecho con criterio, no con prisa.</span>
   </div>
 </footer>
@@ -688,39 +550,6 @@
     const mailto = 'mailto:hola@eriquiroz.com?subject=' + encodeURIComponent('Proyecto Atelier Digital') +
       '&body=' + encodeURIComponent(body);
     window.location.href = mailto;
-  });
-
-  // Contact form -> Web3Forms
-  const contactForm = document.getElementById('contactForm');
-  const cfNote = document.getElementById('cfNote');
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    cfNote.className = 'form-note';
-    cfNote.textContent = 'Enviando…';
-    try {
-      const data = Object.fromEntries(new FormData(contactForm).entries());
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        body: JSON.stringify(data)
-      });
-      const json = await res.json();
-      if (json.success) {
-        cfNote.className = 'form-note ok';
-        cfNote.textContent = 'Gracias por escribirme. Te respondo en menos de 24 horas.';
-        contactForm.reset();
-      } else {
-        cfNote.className = 'form-note err';
-        cfNote.textContent = 'No se pudo enviar. Escríbeme directo a hola@eriquiroz.com';
-      }
-    } catch (err) {
-      cfNote.className = 'form-note err';
-      cfNote.textContent = 'No se pudo enviar. Escríbeme directo a hola@eriquiroz.com';
-    } finally {
-      btn.disabled = false;
-    }
   });
 </script>
 </body>

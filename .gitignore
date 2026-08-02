@@ -1,1 +1,12 @@
+# Original Canvas export — contents already extracted into reference/ and assets/
+/Animación anillo Punto Q.zip
+
+# Vercel CLI local state
 .vercel
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+
+# Claude Code tooling state (impeccable design-review hook cache)
+.impeccable/
