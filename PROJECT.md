@@ -6,6 +6,12 @@ Landing page personal/profesional de Erika Quiroz, ingeniera civil industrial qu
 
 Nota de alcance: las clínicas dentales son un rubro más entre varios. **DentalGrowStack** (dentalgrowstack.com) es un proyecto hermano con sitio propio — esta landing solo lo enlaza como calculadora gratuita para visitantes de clínicas, no lo reemplaza.
 
+## Estado del deploy
+
+**En producción, verificado.** [eriquiroz.com](https://eriquiroz.com) sirve el `index.html` de este repo tal cual — confirmado por curl que el HTML en vivo es byte-idéntico al local (último commit `66a050a`, 2026-08-02). Repo = `eriquiroz/eri-quiroz-site` en GitHub, rama `master`, proyecto Vercel `eri-quiroz-site` — un `git push origin master` deploya solo, no hace falta nada más en Vercel ni en Hostinger (el dominio ya apuntaba ahí antes de este trabajo).
+
+**Lo que falta no es técnico — es contenido.** El sitio funciona de punta a punta (nav, formulario, blog, fotos), pero tiene placeholders visibles a un visitante real (precio, contadores) hasta que Erika dé los valores — ver "Pendientes que solo Erika puede resolver" abajo.
+
 ## Estado actual
 
 - **[index.html](index.html) — sitio v3, en producción.** HTML/CSS/JS plano, sin build, autocontenido. Port fiel de [reference/hero-punto-q-canvas.dc.html](reference/hero-punto-q-canvas.dc.html) — ese borrador de Canvas **es** el diseño real que Erika aprobó y espera ver en producción, no una referencia opcional. `index.html` reproduce su sistema de color (`#211E19` de ink, no el `#1a1a1a` de v2), su nav flotante tipo pill con menú hamburguesa en mobile, el efecto "shine" animado en "se acuerde", el footer oscuro con bloque de CTA propio, y el price-block claro (`#F5EFE2`) — todo convertido de los bindings `{{ }}` / `style-hover` / `style-focus` del formato Canvas a CSS y JS planos.
@@ -77,18 +83,18 @@ Tipografía: Hanken Grotesk (texto, pesos 400–800) + JetBrains Mono (eyebrows,
 
 ## Pendientes que solo Erika puede resolver
 
-Ya no bloquean el deploy (el sitio está en producción con placeholders visibles y honestos), pero sí bloquean que el copy quede terminado — ver sección 15 del delta para contexto completo:
+El sitio ya está en producción (ver "Estado del deploy" abajo); esto es lo que falta para que el copy quede terminado — ver sección 15 del delta para contexto completo. Buscar `<!-- pendiente: ... -->` en `index.html` para ubicar los tres que quedan como comentario HTML; los otros están inline con subrayado punteado (`border-bottom:2px dashed`), visibles en la página.
 
-1. Precio piso de la implementación de tres semanas — hoy en `index.html` dice `Desde $______ + IVA` con subrayado punteado.
-2. Segunda foto para "Quién soy" (hoy reusa la misma foto del hero, porque es la única que existe).
-   - **Resolución de la foto:** pendiente un upscale real vía Higgsfield (`upscale_image`, ~2 créditos). La cuenta conectada tiene 0 créditos — hay que decidir top-up o el trial gratis de 3 días de Higgsfield Plus (100 créditos, $0 hoy, tarjeta requerida, se renueva a $49/mes si no se cancela antes) antes de poder correrlo. Mientras tanto el sitio usa la foto original sin procesar (decisión explícita de Erika, ver commit correspondiente).
-3. La "línea humana" en Quién soy — omitida del HTML visible, marcada con un comentario en el código donde debe ir.
-4. Los dos contadores de "Lo que he construido": `__ proyectos` y `__ rubros` (placeholder visible).
-5. Número real de WhatsApp — se sacó del cierre por no tener uno real (el delta autoriza esta opción). Si Erika quiere reactivarlo, hay que agregar el link de vuelta con el número real.
-6. Confirmar las 7 respuestas del FAQ, especialmente las últimas tres — nota dejada como comentario HTML en `index.html` junto a la sección de preguntas.
+1. **Precio piso** de la implementación de tres semanas — `index.html` línea ~378, hoy dice `Desde $······· + IVA`.
+2. **Segunda foto para "Quién soy"** — hoy reusa la misma foto del hero porque es la única que existe.
+3. **Resolución de la foto** (`assets/images/erika-cutout.png`, 912×1181, con halo amarillo de un recorte de fondo imperfecto) — pendiente un upscale real vía Higgsfield (`upscale_image`, ~2 créditos). La cuenta conectada tiene 0 créditos. Opciones que ya se le presentaron a Erika: trial gratis de 3 días de Higgsfield Plus (100 créditos, $0 hoy, tarjeta requerida, se renueva a $49/mes si no se cancela antes) o comprar un pack de créditos. **No repetir el intento de upscale casero con Pillow** — ya se probó, Erika lo rechazó por verse borroso a tamaño real (ver "Sobre las fotos — historial" arriba). Si se retoma: la imagen fuente ya está subida a Higgsfield (`media_id: c7f431ee-de1c-4061-9074-4bc21fecab4c`, puede haber expirado — resubir si es necesario) — correr `upscale_image` con `resolution:"4k"` sobre ella y volver a recortar/despillar el resultado con el mismo método HSV que ya está probado (ver historial de esta sesión o rehacer: autocontraste → chroma-key HSV con umbral de saturación/valor, no distancia RGB pura → despill proporcional).
+4. **La "línea humana"** en Quién soy — `index.html` línea ~288 (comentario HTML), una frase personal de Erika sin relación con el trabajo.
+5. **Los dos contadores** de "Lo que he construido" — `index.html` líneas ~400-401, `__ proyectos` y `__ rubros`.
+6. **Número real de WhatsApp** — se sacó del cierre y del footer por no tener uno real (el delta autoriza esta opción). Si Erika quiere reactivarlo, agregar de vuelta `https://wa.me/<numero>` junto al botón "Conversemos" del cierre y como ítem "WhatsApp" en el footer (ver CLAUDE.md).
+7. **Confirmar las 7 respuestas del FAQ**, especialmente las últimas tres — `index.html` línea ~423 (comentario HTML).
 
 ## Próximos pasos sugeridos
 
-1. Resolver los pendientes de arriba con Erika y editar `index.html` directamente (son ediciones de texto puntuales, buscar `class="ph"` para los placeholders y los comentarios `<!-- pendiente: ... -->`).
+1. Resolver los pendientes de arriba con Erika y editar `index.html` directamente (son ediciones de texto puntuales sobre los puntos marcados arriba).
 2. Decidir si se integra el render del isotipo (`assets/images/punto-q-ring-render.webp`) — hoy no está usado en `index.html`.
-3. Deploy a eriquiroz.com (GitHub + Vercel + dominio en Hostinger — ver abajo).
+3. Si se quiere alinear el blog con el posicionamiento "negocios de servicios en general" (hoy es 100% dental), es trabajo de copy aparte — no se ha tocado.
