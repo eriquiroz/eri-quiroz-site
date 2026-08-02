@@ -54,16 +54,18 @@ reference/
 
 assets/
   images/
-    erika-cutout.webp                  foto de producción: retocada (luz/contraste), recorte limpio, 2x res
+    erika-cutout.png                   foto de producción: original tal cual, SIN retocar (ver nota abajo)
     punto-q-ring-render.webp           render 3D del isotipo (anillo + punto), sin integrar aún
   originals/
-    erika-photo-raw-cutout.png         recorte original (con halo amarillo), sin retocar — fuente
+    erika-photo-raw-cutout.png         mismo archivo que assets/images/erika-cutout.png — fuente
     erika-photo-yellow-bg.png          foto original con fondo amarillo sólido — fuente del recorte de arriba
 ```
 
 El video del isotipo (`Using_the_attached_image_as_th.mp4` dentro del zip) se descartó — Erika decidió no usarlo. Sigue disponible dentro del zip original si hace falta recuperarlo, pero no se copió a `assets/`.
 
-**Sobre las fotos:** solo existe una foto real de Erika (la de fondo amarillo). El "cutout" es esa misma foto con el fondo removido. El pendiente #2 (una foto distinta para "Quién soy") sigue abierto — hoy ambas secciones usan la misma imagen retocada. El retoque de luz/contraste y el recorte se hicieron con Pillow (autocontraste, chroma-key por HSV, despill, upscale 2x con alpha premultiplicado) porque la cuenta de Higgsfield conectada tiene 0 créditos disponibles; si en algún momento se quiere un upscale con IA real (más detalle sintetizado, no solo reescalado), hay que cargar créditos ahí.
+**Sobre las fotos — historial:** solo existe una foto real de Erika (la de fondo amarillo, 912×1181). El "cutout" es esa misma foto con el fondo removido. El pendiente #2 (una foto distinta para "Quién soy") sigue abierto — ambas secciones usan la misma imagen.
+
+Primero se intentó un retoque con Pillow (autocontraste, chroma-key por HSV, despill, upscale 2x) porque la cuenta de Higgsfield conectada tenía 0 créditos. Erika revisó el resultado en producción y pidió revertir: el upscale casero se veía borroso/con artefactos a tamaño real, peor que el original sin tocar. **Se volvió al archivo original tal cual** (`assets/images/erika-cutout.png` = copia exacta de `assets/originals/erika-photo-raw-cutout.png`, sin ningún procesamiento). Sigue teniendo el halo/fleco amarillo de un recorte de fondo imperfecto y baja resolución nativa (912×1181) — el arreglo real pendiente es un upscale con IA vía Higgsfield (ver sección de créditos abajo), no otro intento casero con Pillow.
 
 ## Sistema de diseño (no negociable salvo instrucción explícita)
 
@@ -78,6 +80,7 @@ Ya no bloquean el deploy (el sitio está en producción con placeholders visible
 
 1. Precio piso de la implementación de tres semanas — hoy en `index.html` dice `Desde $______ + IVA` con subrayado punteado.
 2. Segunda foto para "Quién soy" (hoy reusa la misma foto del hero, porque es la única que existe).
+   - **Resolución de la foto:** pendiente un upscale real vía Higgsfield (`upscale_image`, ~2 créditos). La cuenta conectada tiene 0 créditos — hay que decidir top-up o el trial gratis de 3 días de Higgsfield Plus (100 créditos, $0 hoy, tarjeta requerida, se renueva a $49/mes si no se cancela antes) antes de poder correrlo. Mientras tanto el sitio usa la foto original sin procesar (decisión explícita de Erika, ver commit correspondiente).
 3. La "línea humana" en Quién soy — omitida del HTML visible, marcada con un comentario en el código donde debe ir.
 4. Los dos contadores de "Lo que he construido": `__ proyectos` y `__ rubros` (placeholder visible).
 5. Número real de WhatsApp — se sacó del cierre por no tener uno real (el delta autoriza esta opción). Si Erika quiere reactivarlo, hay que agregar el link de vuelta con el número real.
