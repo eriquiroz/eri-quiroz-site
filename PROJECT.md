@@ -8,11 +8,12 @@ Nota de alcance: las clínicas dentales son un rubro más entre varios. **Dental
 
 ## Estado actual
 
-- **[index.html](index.html) — sitio v3, en producción.** HTML/CSS/JS plano, sin build, autocontenido (mismo patrón que v2). Aplica el delta completo: orden de secciones, copy nuevo, foto de Erika en hero y Quién soy, sección de preguntas frecuentes, nav con anclas, footer mínimo respetado tal como pide el delta. Construido a partir de v2 (para no perder el sistema de color/tipografía/footer/animación del orbit, todos protegidos por el delta) más las mejoras estructurales del borrador de Canvas donde no entraban en conflicto con el "no tocar" del delta.
-- **reference/eriquiroz-landing-v2-live.html** — baseline anterior, se mantiene como referencia histórica.
-- **reference/hero-punto-q-canvas.dc.html** — borrador visual de v3 en formato Canvas de Claude.ai (no deployable). Sirvió de inspiración para `index.html` pero se descartaron sus desvíos del delta: cambiaba el color `--ink`, quitaba la animación del orbit y rediseñaba el footer — las tres cosas que el delta protege explícitamente. Se conserva solo como referencia.
+- **[index.html](index.html) — sitio v3, en producción.** HTML/CSS/JS plano, sin build, autocontenido. Port fiel de [reference/hero-punto-q-canvas.dc.html](reference/hero-punto-q-canvas.dc.html) — ese borrador de Canvas **es** el diseño real que Erika aprobó y espera ver en producción, no una referencia opcional. `index.html` reproduce su sistema de color (`#211E19` de ink, no el `#1a1a1a` de v2), su nav flotante tipo pill con menú hamburguesa en mobile, el efecto "shine" animado en "se acuerde", el footer oscuro con bloque de CTA propio, y el price-block claro (`#F5EFE2`) — todo convertido de los bindings `{{ }}` / `style-hover` / `style-focus` del formato Canvas a CSS y JS planos.
+- **reference/eriquiroz-landing-v2-live.html** — baseline anterior (v2), ya no es la referencia de diseño. Se mantiene solo como historial.
 
-Placeholders visibles a propósito en `index.html` (no se inventó ningún valor): precio piso (`$______`), contadores de proyectos y rubros (`__`). El WhatsApp del cierre se quitó (no había número real; el propio delta autoriza "sacarlo" si no hay número). La "línea humana" de Quién soy y la confirmación de las 3 últimas respuestas del FAQ se dejaron fuera del HTML visible (son notas editoriales para Erika, no copy de cliente) — quedan marcadas con comentarios HTML en el código, en el lugar exacto donde van.
+**Importante — lección de esta iteración:** un primer intento de `index.html` reconstruyó el sitio priorizando la lista "no tocar" del delta (sistema de color, footer, animación del orbit) por sobre el borrador de Canvas, revirtiendo varias de sus decisiones visuales (color de ink, nav, footer, price-block). Erika lo reportó como "versión antigua". La lista "no tocar" del delta describe el sistema de v2 en el momento en que se escribió el delta; el borrador de Canvas es una iteración posterior de ese mismo sistema (misma paleta base, misma tipografía, mismo logo) y es la que manda. Ante una discrepancia entre el delta y un artefacto de diseño más reciente que Erika comparte directamente, el artefacto más reciente gana — no relitigar contra el delta.
+
+Placeholders visibles a propósito en `index.html` (no se inventó ningún valor): precio piso (`$·······`), contadores de proyectos y rubros (`__`). El WhatsApp se quitó (no había número real; el propio delta autoriza "sacarlo" si no hay número) — es la única omisión deliberada respecto al borrador de Canvas, que sí lo incluye con el número placeholder `56900000000`. La "línea humana" de Quién soy, la nota de confirmación de las últimas 3 respuestas del FAQ, y la nota "reemplaza el piso de precio" se dejaron fuera del HTML visible (son notas editoriales de Canvas dirigidas a Erika, no copy de cliente) — quedan marcadas con comentarios HTML en el código, en el lugar exacto donde van.
 
 ## El repo de GitHub ya existía — se reusó, no se creó uno nuevo
 
@@ -69,10 +70,10 @@ Primero se intentó un retoque con Pillow (autocontraste, chroma-key por HSV, de
 
 ## Sistema de diseño (no negociable salvo instrucción explícita)
 
-Tokens de color (de v2, ya usados también en v3-canvas):
-`--beige:#f4f1ea` `--paper:#faf8f3` `--ink:#1a1a1a` `--graphite:#3a3a3a` `--muted:#7a7266` `--sand:#c9bca8` `--deep:#a8967d` `--line:#e4ddd0`
+Tokens de color reales de `index.html` (tomados del borrador de Canvas, fuente de verdad actual):
+`--beige:#F4F1EA` `--ink:#211E19` `--deep:#A8967D` `--deep2:#806A49` `--alt:#ECE7DC` `--cream-card:#F5EFE2` `--cierre-bg:#E4DAC8`
 
-Tipografía: Hanken Grotesk (texto) + JetBrains Mono (eyebrows, mono labels). Logo: anillo + punto (círculo trazo + círculo relleno en `--deep`/`--ink`). Animación de órbita del hero y reveal-on-scroll: mantener tal cual.
+Tipografía: Hanken Grotesk (texto, pesos 400–800) + JetBrains Mono (eyebrows, mono labels, nav). Logo: anillo + punto (círculo trazo + círculo relleno en `--deep`/`--ink`). Reveal-on-scroll: mantener. La animación de "anillo que orbita" (SVG `animateTransform`) de v2 **no** está en el diseño de Canvas — el hero usa en su lugar un blob radial-gradient estático detrás del contenido; no reintroducir el orbit sin que Erika lo pida explícitamente.
 
 ## Pendientes que solo Erika puede resolver
 

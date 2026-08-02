@@ -10,25 +10,24 @@ Landing page estática para Erika Quiroz (eriquiroz.com), más un post de blog h
 
 ## Los dos formatos de HTML en este repo — no confundirlos
 
-- **HTML plano** (`index.html`, `reference/eriquiroz-landing-v2-live.html`): el formato de producción. Autocontenido, sirve directo desde cualquier host estático. `index.html` es el sitio que se deploya.
-- **`.dc.html`** (`reference/hero-punto-q-canvas.dc.html`, `reference/canvas-empty.dc.html`): exports del Canvas/Artifacts de Claude.ai. Usan un custom element `<x-dc>`, bindings de plantilla `{{ variable }}`, atributos `style-hover`/`style-focus`, y una clase `class Component extends DCLogic { ... }` al final. Solo funcionan con `reference/support.js` cargado. **No son deployables tal cual** y son solo referencia histórica — `index.html` ya incorporó lo útil de ese borrador (nav con anclas, foto en hero/quién-soy, acordeón de FAQ, contadores) y descartó lo que violaba el "no tocar" del delta (color `--ink` distinto, orbit ausente, footer rediseñado).
+- **HTML plano** (`index.html`): el formato de producción. Autocontenido, sirve directo desde cualquier host estático. Es el único archivo que se deploya.
+- **`.dc.html`** (`reference/hero-punto-q-canvas.dc.html`, `reference/canvas-empty.dc.html`): exports del Canvas/Artifacts de Claude.ai. Usan un custom element `<x-dc>`, bindings de plantilla `{{ variable }}`, atributos `style-hover`/`style-focus`, y una clase `class Component extends DCLogic { ... }` al final. Solo funcionan con `reference/support.js` cargado, así que **no son deployables tal cual** — pero `hero-punto-q-canvas.dc.html` **es la fuente de verdad del diseño visual**, no solo una referencia histórica. `index.html` es un port 1:1 de ese borrador: mismo color de ink (`#211E19`), mismo nav flotante pill + hamburguesa, mismo efecto shine en "se acuerde", mismo footer oscuro con CTA propio, mismo price-block claro. Los bindings `{{ }}`/`style-hover`/`style-focus`/`onClick` se tradujeron a CSS (`:hover`, `:focus-visible`, clases) y JS vanilla — nada del *diseño* se cambió a propósito.
+- **`reference/eriquiroz-landing-v2-live.html`**: la generación anterior al borrador de Canvas. Ya no es la referencia de diseño — se mantiene solo como historial. No usar sus valores de color/estilo para "corregir" `index.html`.
+
+**Si el `.dc.html` y el delta ("no tocar...") entran en conflicto en algo visual** (color, nav, footer, animaciones), el `.dc.html` gana — es la iteración de diseño más reciente que Erika aprobó. Ya pasó una vez: una versión de `index.html` priorizó literalmente la lista "no tocar" del delta por sobre el borrador de Canvas, y Erika la reportó como "versión antigua" porque se sentía como un paso atrás visualmente. No repetir ese error.
 
 ## Placeholders y contenido pendiente — convención en `index.html`
 
-- Valores numéricos que Erika no ha confirmado (precio piso, contadores de proyectos/rubros) usan `<span class="ph">` con subrayado punteado — visible a propósito, no oculto. Buscar `class="ph"` para encontrarlos todos.
-- Notas editoriales que no son copy de cliente (la "línea humana" pendiente en Quién soy, la confirmación de las últimas 3 respuestas del FAQ) están como comentarios `<!-- pendiente: ... -->` en el HTML, no como texto visible — no exponer notas internas a quien visita el sitio real.
-- El WhatsApp del cierre está removido (no había número real; el delta mismo autoriza "sacarlo" en vez de dejar un número falso). Si Erika da un número real, agregar de vuelta un link `https://wa.me/<numero>` junto al botón "Conversemos".
+- Valores numéricos que Erika no ha confirmado (precio piso `$·······`, contadores `__ proyectos` / `__ rubros`) quedan con el subrayado punteado tal como los muestra el borrador de Canvas — visibles a propósito, no ocultos.
+- Notas editoriales que no son copy de cliente (la "línea humana" pendiente en Quién soy, la nota "reemplaza el piso de precio", la confirmación de las últimas 3 respuestas del FAQ) están como comentarios `<!-- pendiente: ... -->` en el HTML, no como texto visible — no exponer notas internas a quien visita el sitio real, aunque el borrador de Canvas sí las muestre en pantalla (esa es la única categoría de contenido donde no seguimos al `.dc.html` al pie de la letra).
+- El WhatsApp está removido del todo (cierre y footer) — no había número real y el delta autoriza "sacarlo" en vez de dejar uno falso, a diferencia del borrador de Canvas que sí lo deja con el placeholder `56900000000`. Si Erika da un número real, agregar de vuelta `https://wa.me/<numero>` junto al botón "Conversemos" del cierre y el ítem "WhatsApp" en el footer.
 
 ## Qué no tocar sin permiso explícito
 
-Del delta (sección "Lo que no hay que tocar") y confirmado en el código de v2:
-
-- Sistema de color: `--beige #f4f1ea` `--paper #faf8f3` `--ink #1a1a1a` `--graphite #3a3a3a` `--muted #7a7266` `--sand #c9bca8` `--deep #a8967d` `--line #e4ddd0`
-- El logo Punto Q (círculo trazo + círculo punto relleno) y su animación de órbita (`animateTransform`, 46s, se elimina completa si `prefers-reduced-motion`).
-- Tipografía: Hanken Grotesk (texto) + JetBrains Mono (eyebrows/mono).
-- El footer y el patrón de reveal-on-scroll (`IntersectionObserver`, clase `.reveal`/`data-reveal`).
+- El sistema de color/tipografía/logo de `index.html` (ver PROJECT.md, "Sistema de diseño") — viene del borrador de Canvas, no de v2.
 - Los tres verbos de "qué te dejo funcionando": respondiendo, persiguiendo, recuperando.
 - El botón "Quiero saber cuánto estoy perdiendo" y el párrafo de cierre sobre la primera conversación gratis.
+- El patrón de reveal-on-scroll (`IntersectionObserver`, clase `.reveal`).
 
 ## Copy: reglas de tono
 
@@ -44,6 +43,6 @@ Del delta (sección "Lo que no hay que tocar") y confirmado en el código de v2:
 
 ## Convenciones al editar
 
-- Un solo archivo HTML por página, CSS en `<style>` inline, JS en `<script>` inline al final — así está v2.
-- Mobile-first breakpoints ya definidos en v2 (`@media(max-width:760px)`, `@media(max-width:680px)`) — reusar esos cortes, no inventar nuevos sin necesidad.
-- Antes de dar por terminado un cambio visual, levantarlo en navegador (server estático simple, ej. `python3 -m http.server`) y revisar tanto el flujo principal como el responsive — no hay suite de tests que lo valide por ti.
+- Un solo archivo HTML por página, CSS en `<style>` inline, JS en `<script>` inline al final.
+- Breakpoint de nav (pill de escritorio vs. hamburguesa mobile): `768px`, viene del propio borrador de Canvas (`isMobile = innerWidth < 768` en su lógica original) — no cambiarlo sin motivo.
+- Antes de dar por terminado un cambio visual, levantarlo en navegador (server estático simple, ej. `python3 -m http.server`) y revisar tanto el flujo principal como el responsive — no hay suite de tests que lo valide por ti. Ojo con secciones que usan `min-height:100vh` (el hero) al tomar capturas de página completa con una ventana artificialmente alta: los `vh` se recalculan contra esa altura y la sección se estira, mostrando de más antes de llegar al resto del contenido.
