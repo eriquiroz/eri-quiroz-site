@@ -36,10 +36,7 @@ Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
 1. **PDF de la lista de verificación** (la lista está escrita; falta maquetarla). Guardarlo en `recursos/`.
 2. **Servicio de envío de correo** (ver arriba).
-3. **Enlace de HEAT Academy** (el nombre aparece en el texto; solo falta el enlace).
-4. **Enlace con referido de Imperio Agéntico** (el nombre aparece como texto sin enlace).
-5. **URL del perfil de LinkedIn** para el pie de página.
-6. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
-7. **og:image** 1200×630 para cuando se comparte el enlace.
-8. **Verificar** que `https://uchile.cl/cursos/240598` es la página correcta del curso (no se pudo abrir desde el entorno de construcción).
-9. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+3. **URL del perfil de LinkedIn** para el pie de página.
+4. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
+5. **og:image** 1200×630 para cuando se comparte el enlace.
+6. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.

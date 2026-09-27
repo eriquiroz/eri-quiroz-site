@@ -16,7 +16,7 @@ Sitio personal de Erika Quiroz (eriquiroz.com): una sola página estática sobre
 
 ## Fuentes de diseño
 
-- `reference/diseno-sitio.html` — el diseño aprobado (Claude Design). `index.html` es un port fiel; las únicas diferencias son de producción: fuentes alojadas en `assets/fonts/`, formulario conectado a Web3Forms, y los elementos que dependen de un dato pendiente (enlaces de HEAT Academy, LinkedIn e Imperio Agéntico, enlace a política de privacidad) quedan como comentarios `<!-- pendiente: ... -->` en vez de mostrarse vacíos o con `href="#"`.
+- `reference/diseno-sitio.html` — el diseño aprobado (Claude Design). `index.html` es un port fiel; las únicas diferencias son de producción: fuentes alojadas en `assets/fonts/`, formulario conectado a Web3Forms, y los elementos que dependen de un dato pendiente (enlace de LinkedIn, enlace a política de privacidad) quedan como comentarios `<!-- pendiente: ... -->` en vez de mostrarse vacíos o con `href="#"`.
 - `archivo/` — el sitio anterior (v3, negocios de servicios / dental) y todo su material. Solo historial: no usar su diseño ni su copy.
 
 ## Reglas de contenido (del brief)
