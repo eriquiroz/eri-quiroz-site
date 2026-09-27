@@ -4,26 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Erika Quiroz · IA en el trabajo: decidir antes de aplicar</title>
-<meta name="description" content="Erika Quiroz enseña a decidir cuándo aplicar IA en el trabajo, y cuándo no. Formación aplicada para profesionales, desde más de quince años en salud pública, tecnología e innovación.">
+<meta name="description" content="Enseño a decidir cuándo aplicar IA en el trabajo, y cuándo no. Formación aplicada para profesionales, desde más de quince años en salud pública, tecnología e innovación.">
 <meta name="color-scheme" content="light">
-<link rel="canonical" href="https://eriquiroz.com/">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="es_CL">
-<meta property="og:site_name" content="Erika Quiroz">
 <meta property="og:title" content="Erika Quiroz · Decidir antes de aplicar">
 <meta property="og:description" content="Enseño a decidir cuándo aplicar IA en el trabajo, y cuándo no.">
 <meta property="og:url" content="https://eriquiroz.com/">
-<!-- pendiente: og:image 1200×630 -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Erika Quiroz","url":"https://eriquiroz.com/","email":"mailto:hola@eriquiroz.com","description":"Enseño a decidir cuándo aplicar IA en el trabajo, y cuándo no."}
-</script>
-<link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- PENDIENTE: og:image 1200×630 -->
+<!-- Referencia de diseño: en producción, alojar las fuentes en el propio dominio (ver README) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-/* Fuentes alojadas en el propio dominio (subconjunto latino, cubre español) */
-@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/hanken-grotesk-latin.woff2) format('woff2')}
-@font-face{font-family:'Hanken Grotesk';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/hanken-grotesk-italic-latin.woff2) format('woff2')}
-@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/ibm-plex-mono-400-latin.woff2) format('woff2')}
-
 :root{
   --papel:#fdfbf9; --arena:#f7efe3; --linea:#e3ddd3; --foto-a:#f2eade; --foto-b:#f8f3eb;
   --tinta:#261d16; --gris:#5b5048; --placeholder:#7b6f66;
@@ -111,9 +102,7 @@ p,h3{text-wrap:pretty}
 .form input[aria-invalid="true"]{border-color:var(--error)}
 .form .boton{flex:0 0 auto}
 .form__error{margin:10px 0 0 24px;font-size:16px;line-height:1.5;color:var(--error)}
-.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .confirmacion{display:grid;gap:8px;padding:24px;background:var(--papel);border-radius:var(--r)}
-.confirmacion:focus{outline:none}
 .confirmacion strong{font-size:24px;line-height:1.3;font-weight:600}
 .confirmacion p{font-size:16px;line-height:1.55;color:var(--gris)}
 .nota{margin-top:16px;font-size:16px;line-height:1.55;color:var(--gris)}
@@ -150,11 +139,10 @@ p,h3{text-wrap:pretty}
       <a class="boton" href="#recursos">Recibir la lista</a>
       <p class="firma">Decidir antes de aplicar.</p>
     </div>
-    <!-- pendiente: foto de Erika, 4:5, mín. 800×1000. Guardarla en /assets/erika-quiroz.jpg y descomentar:
     <div class="foto">
-      <img src="/assets/erika-quiroz.jpg" alt="Erika Quiroz" width="800" height="1000">
+      <!-- PENDIENTE: foto de Erika, 4:5, mín. 800×1000 -->
+      <!-- <img src="/erika-quiroz.jpg" alt="Erika Quiroz" width="800" height="1000"> -->
     </div>
-    -->
   </header>
 </div>
 
@@ -195,9 +183,8 @@ p,h3{text-wrap:pretty}
         <p>Es un curso avanzado, para quienes ya usan herramientas de IA y quieren ir más allá.</p>
         <p>Dicto este curso en la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile (educación continua) y en HEAT Academy. Son el mismo contenido con públicos distintos.</p>
         <div class="enlaces">
-          <a href="https://uchile.cl/cursos/240598" target="_blank" rel="noopener">FCFM, Universidad de Chile ↗</a>
-          <!-- pendiente: enlace de HEAT Academy. Cuando exista, descomentar con la URL real:
-          <a href="https://..." target="_blank" rel="noopener">HEAT Academy ↗</a> -->
+          <a href="https://uchile.cl/cursos/240598" target="_blank" rel="noopener">FCFM, Universidad de Chile ↗</a><!-- VERIFICAR URL del curso 240598 -->
+          <a href="#" target="_blank" rel="noopener">HEAT Academy ↗</a><!-- PENDIENTE: enlace HEAT Academy -->
         </div>
         <p class="secundario">Si quieres una versión cerrada para tu equipo u organización, escríbeme a <a href="mailto:hola@eriquiroz.com">hola@eriquiroz.com</a>.</p>
       </div>
@@ -214,17 +201,12 @@ p,h3{text-wrap:pretty}
             <p class="medida">Una guía breve para decidir, antes de probar cualquier herramienta, si un proceso vale la pena intervenir con IA y cómo saber si aportó.</p>
           </div>
           <div class="formulario-col">
-            <div class="confirmacion" role="status" tabindex="-1" hidden>
+            <div class="confirmacion" role="status" hidden>
               <strong>Listo. Revisa tu correo.</strong>
               <p>La lista va en camino a <span data-correo></span>. Si no llega en unos minutos, revisa la carpeta de correo no deseado.</p>
             </div>
-            <!-- Envío: Web3Forms (mismo access_key del sitio anterior). Cada correo llega como aviso al buzón de Erika.
-                 pendiente: reemplazar por un servicio de envío de correo que mande la lista automáticamente (ver PROJECT.md). -->
+            <!-- PENDIENTE: action/servicio de envío de correo (ver README) -->
             <form class="form" novalidate>
-              <input type="hidden" name="access_key" value="48c71e32-71e7-42de-aef1-5e02b1bb3bf7">
-              <input type="hidden" name="subject" value="Nueva solicitud de la lista de verificación (eriquiroz.com)">
-              <input type="hidden" name="from_name" value="eriquiroz.com">
-              <input type="checkbox" name="botcheck" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
               <label for="correo">Tu correo</label>
               <div class="form__fila">
                 <input id="correo" name="email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@correo.cl" aria-describedby="correo-error" required>
@@ -232,10 +214,10 @@ p,h3{text-wrap:pretty}
               </div>
               <p id="correo-error" class="form__error" role="alert" hidden>Revisa el correo: debe tener la forma nombre@correo.cl.</p>
             </form>
-            <p class="nota">Te la envío al correo. Más adelante avisaré por este mismo medio cuando publique un recurso nuevo; nada más.</p>
+            <p class="nota">Te la envío al correo. Más adelante avisaré por este mismo medio cuando publique un recurso nuevo; nada más. <a href="/privacidad">Política de privacidad</a>.</p>
           </div>
         </li>
-        <!-- Recurso nuevo = copiar este bloque (y quitar los signos de comentario):
+        <!-- Recurso nuevo = copiar este bloque:
         <li class="recurso">
           <div>
             <h3>Título del recurso</h3>
@@ -252,16 +234,14 @@ p,h3{text-wrap:pretty}
     <div class="contenedor dos-col">
       <div class="dos-col__titulo">
         <h2 class="h2">Sobre mí</h2>
-        <!-- Alternativa: poner aquí la .foto en vez de en Inicio (una sola foto en todo el sitio) -->
+        <!-- Alternativa: mover .foto aquí y quitarla de Inicio (una sola foto en todo el sitio) -->
       </div>
       <div class="dos-col__cuerpo">
         <p class="lead">Soy Erika Quiroz, ingeniera civil industrial y Máster en Ingeniería de Negocios de la Universidad de Chile.</p>
         <p>Llegué a la IA desde la gestión, no desde la programación. Trabajé más de quince años en salud pública (Minsal, Fonasa, servicios de salud y hospitales), en tecnología y en gestión de productos digitales. Ahí aprendí que la mayoría de los problemas no se resuelven con más tecnología, sino con una buena decisión sobre qué vale la pena mejorar.</p>
         <p>Mi forma de pensar la tecnología viene del programa Organizational Design for Digital Transformation del MIT Sloan, dictado por Jeanne Ross: primero el orden operativo, después la innovación. Aplicado a la IA, eso significa decidir antes de aplicar.</p>
         <p>Hoy soy Gerenta del Programa Transforma Innovación en Salud de Corfo, donde articulo iniciativas público-privadas en inteligencia artificial y datos abiertos, dispositivos médicos y terapias avanzadas, entre otras, para impulsar el desarrollo y la adopción de innovación en salud. También soy docente de IA generativa en la FCFM de la Universidad de Chile y en HEAT Academy.</p>
-        <p>Sigo aprendiendo IA en la comunidad Imperio Agéntico.</p>
-        <!-- pendiente: enlace con referido. Cuando exista, envolver "Imperio Agéntico" en
-             <a href="https://..." target="_blank" rel="noopener">Imperio Agéntico</a> -->
+        <p>Sigo aprendiendo IA en la comunidad <a href="#" target="_blank" rel="noopener">Imperio Agéntico</a>.</p><!-- PENDIENTE: enlace con referido -->
         <p>Para consultas, escríbeme a <a href="mailto:hola@eriquiroz.com">hola@eriquiroz.com</a>.</p>
       </div>
     </div>
@@ -273,8 +253,7 @@ p,h3{text-wrap:pretty}
     <span class="pie__firma">Decidir antes de aplicar.</span>
     <nav aria-label="Contacto">
       <a href="mailto:hola@eriquiroz.com">hola@eriquiroz.com</a>
-      <!-- pendiente: URL del perfil de LinkedIn. Cuando exista, descomentar:
-      <a href="https://www.linkedin.com/in/..." target="_blank" rel="noopener">LinkedIn</a> -->
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a><!-- PENDIENTE: URL del perfil -->
       <!-- Reservado, activar cuando exista el canal:
       <a href="https://www.youtube.com/@..." target="_blank" rel="noopener">YouTube</a> -->
     </nav>
@@ -284,16 +263,12 @@ p,h3{text-wrap:pretty}
 <script>
 (() => {
   const form = document.querySelector('.form');
-  const input = form.querySelector('#correo');
+  const input = form.querySelector('input');
   const btn = form.querySelector('button');
   const err = document.getElementById('correo-error');
   const ok = document.querySelector('.confirmacion');
-  const textoError = err.textContent;
   const valido = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-  const setError = (on, texto = textoError) => {
-    err.textContent = texto; err.hidden = !on;
-    input.setAttribute('aria-invalid', on ? 'true' : 'false');
-  };
+  const setError = on => { err.hidden = !on; input.setAttribute('aria-invalid', on ? 'true' : 'false'); };
   input.addEventListener('input', () => { if (!err.hidden) setError(false); });
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -301,20 +276,14 @@ p,h3{text-wrap:pretty}
     if (!valido(v)) { setError(true); input.focus(); return; }
     btn.disabled = true; btn.textContent = 'Enviando…';
     try {
-      const datos = Object.fromEntries(new FormData(form).entries());
-      datos.email = v;
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(datos)
-      });
-      const json = await res.json();
-      if (!json.success) throw new Error(json.message);
+      // PENDIENTE: reemplazar por la llamada real al servicio de correo.
+      await new Promise(r => setTimeout(r, 900));
       ok.querySelector('[data-correo]').textContent = v;
-      form.hidden = true; ok.hidden = false; ok.focus();
+      form.hidden = true; ok.hidden = false; ok.focus?.();
     } catch {
       btn.disabled = false; btn.textContent = 'Recibir la lista';
-      setError(true, 'No se pudo enviar. Intenta de nuevo en un momento.');
+      err.textContent = 'No se pudo enviar. Intenta de nuevo en un momento.';
+      setError(true);
     }
   });
 })();

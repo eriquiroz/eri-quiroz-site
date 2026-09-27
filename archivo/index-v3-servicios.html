@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erika Quiroz — Te dejo funcionando lo que hoy depende de que alguien se acuerde</title>
+<meta name="description" content="Contesto a quien te escribe, sigo tus presupuestos y traigo de vuelta a los clientes que dejaron de venir. Negocios de servicios en general. Tres semanas, precio cerrado antes de partir.">
+<link rel="icon" href="assets/eriquiroz-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --beige:#F4F1EA; --ink:#211E19; --deep:#A8967D; --deep2:#806A49;
+    --alt:#ECE7DC; --cream-card:#F5EFE2; --cierre-bg:#E4DAC8;
+    --photo-g1:#F2EADB; --photo-g2:#E4DAC8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0;background:var(--beige)}
+  body{font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+  a{color:var(--deep2);text-decoration:none}
+  a:hover{color:var(--ink)}
+  img{max-width:100%;display:block}
+  summary{list-style:none;cursor:pointer}
+  summary::-webkit-details-marker{display:none}
+  details[open] .faq-icon{transform:rotate(45deg)}
+
+  @keyframes shine{0%{background-position:200% 0}100%{background-position:0% 0}}
+  @keyframes fadein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .shine{
+    background:linear-gradient(100deg,#6E5B3F 0%,#A8967D 30%,#C9BCA8 50%,#A8967D 70%,#6E5B3F 100%);
+    background-size:200% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    animation:shine 3.4s linear infinite;
+  }
+  .fadein{animation:fadein .8s ease both}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .shine{animation:none}
+    .fadein{animation:none}
+    .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  }
+
+  /* ---- nav pill links ---- */
+  .nl{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.02em;color:rgba(33,30,25,.66);padding:7px 13px;border-radius:999px;transition:color .15s ease}
+  .nl:hover{color:var(--ink)}
+  .nl:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+  .nl-cta{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.02em;color:var(--beige)!important;background:var(--ink);padding:7px 15px;border-radius:999px;margin-left:2px}
+  .nl-cta:hover{color:var(--beige)!important}
+  .nl-cta:focus-visible{outline:2px solid var(--deep2);outline-offset:2px}
+
+  .nm-link{font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(33,30,25,.78);padding:11px 12px;border-radius:8px}
+  .nm-link:hover{color:var(--ink)}
+  .nm-link:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+  .nm-cta{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--beige)!important;background:var(--ink);padding:11px 12px;border-radius:8px;text-align:center;margin-top:4px}
+
+  .nav-brand{display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .nav-brand .nm{font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:500;color:var(--ink)}
+
+  .hamburger{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(33,30,25,.16);border-radius:999px;background:transparent;cursor:pointer;color:var(--ink)}
+  .hamburger:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+  .nav-desktop{display:none;align-items:center;gap:2px;padding:4px;border:1px solid rgba(33,30,25,.12);border-radius:999px}
+  .nav-mobile-menu{display:none;flex-direction:column;gap:2px;margin-top:8px;padding:10px;border:1px solid rgba(33,30,25,.12);border-radius:14px}
+  .nav-mobile-menu.open{display:flex}
+  @media(min-width:768px){
+    .nav-desktop{display:flex}
+    .hamburger{display:none}
+    .nav-mobile-menu{display:none!important}
+  }
+
+  /* ---- buttons ---- */
+  .btn-pri2{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--beige);font-weight:600;padding:15px 24px;border-radius:999px;box-shadow:0 1px 1px rgba(33,30,25,.26),0 2px 4px rgba(33,30,25,.22),0 5px 9px rgba(33,30,25,.19),0 11px 20px rgba(33,30,25,.17),0 20px 38px rgba(33,30,25,.15),inset 0 1px 0 rgba(255,255,255,.15);transition:box-shadow .3s ease,transform .3s ease,background .25s ease}
+  .btn-pri2:hover{background:#33302a;color:var(--beige);box-shadow:0 2px 2px rgba(33,30,25,.28),0 4px 7px rgba(33,30,25,.24),0 9px 15px rgba(33,30,25,.21),0 17px 30px rgba(33,30,25,.19),0 30px 54px rgba(33,30,25,.17),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-2px)}
+  .btn-pri2:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+  .cta-arrow{display:inline-flex;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+  .btn-pri2:hover .cta-arrow{transform:translateX(5px)}
+
+  .btn-sec2{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--ink);font-weight:500;padding:15px 22px;border-radius:999px;border:1px solid rgba(33,30,25,.22);box-shadow:0 1px 2px rgba(33,30,25,.05),0 6px 16px rgba(33,30,25,.07);transition:background .25s ease,border-color .25s ease,box-shadow .25s ease}
+  .btn-sec2:hover{background:rgba(33,30,25,.05);border-color:rgba(33,30,25,.4);box-shadow:0 2px 4px rgba(33,30,25,.07),0 10px 22px rgba(33,30,25,.09)}
+  .btn-sec2:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+
+  .btn-pri2-inv{display:inline-flex;align-items:center;gap:10px;background:var(--beige);color:var(--ink);font-weight:600;padding:15px 28px;border-radius:999px;box-shadow:0 1px 1px rgba(0,0,0,.3),0 2px 4px rgba(0,0,0,.26),0 5px 9px rgba(0,0,0,.22),0 11px 20px rgba(0,0,0,.2),0 20px 38px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.6);transition:transform .3s ease,box-shadow .3s ease}
+  .btn-pri2-inv:hover{transform:translateY(-2px);box-shadow:0 2px 2px rgba(0,0,0,.32),0 4px 7px rgba(0,0,0,.28),0 9px 15px rgba(0,0,0,.24),0 17px 30px rgba(0,0,0,.22),0 30px 54px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.7)}
+  .btn-pri2-inv:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+
+  .link-cta{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:500;transition:color .15s ease}
+  .link-cta:hover{color:var(--deep2)}
+
+  .footer-link{color:var(--beige)!important;transition:opacity .15s ease}
+  .footer-link:hover{opacity:.7}
+
+  .field2 label{display:block;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(33,30,25,.5);margin-bottom:8px}
+  .field2 textarea,.field2 input{width:100%;border:1px solid rgba(33,30,25,.18);border-radius:8px;background:rgba(255,255,255,.6);font-family:'Hanken Grotesk',sans-serif;font-size:14.5px;padding:12px 14px;color:var(--ink);resize:vertical;min-height:52px}
+  .field2 textarea:focus,.field2 input:focus{outline:2px solid var(--deep);outline-offset:1px;border-color:transparent}
+
+  .floating-nav{position:fixed;top:14px;left:0;right:0;z-index:200;padding:0 clamp(14px,3vw,24px);transform:translateY(-140%);opacity:0;pointer-events:none;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s ease}
+  .floating-nav.visible{transform:translateY(0);opacity:1;pointer-events:auto}
+
+  .hero-align-r{text-align:right}
+  @media(max-width:767px){.hero-align-r{text-align:left}}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  .faq-icon{flex:none;font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--deep2);transition:transform .25s ease}
+</style>
+</head>
+<body>
+
+<!-- FLOATING NAV (appears on scroll) -->
+<div class="floating-nav">
+  <div style="max-width:1120px;margin:0 auto;">
+    <nav class="nav-instance" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 10px 8px 16px;border:1px solid rgba(33,30,25,.12);border-radius:999px;background:rgba(244,241,234,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 14px 40px rgba(33,30,25,.12);">
+      <a href="#inicio" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true" style="flex:none;"><circle cx="48" cy="48" r="30" fill="none" stroke="#211E19" stroke-width="8"></circle><circle cx="71" cy="71" r="6.5" fill="#A8967D"></circle></svg>
+        <span class="nm">Erika Quiroz</span>
+      </a>
+      <div class="nav-desktop">
+        <a href="#inicio" class="nl">Inicio</a>
+        <a href="#fugas" class="nl">Fugas</a>
+        <a href="#semanas" class="nl">Cómo trabajo</a>
+        <a href="#atelier" class="nl">Atelier</a>
+        <a href="blog/el-dinero-que-ya-ganaste.html" class="nl">Blog</a>
+        <a href="#contacto" class="nl nl-cta">Contacto →</a>
+      </div>
+      <button class="hamburger nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#211E19" stroke-width="1.6" stroke-linecap="round"></path></svg>
+      </button>
+    </nav>
+    <div class="nav-mobile-menu nav-toggle-menu" style="background:rgba(244,241,234,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 14px 40px rgba(33,30,25,.12);">
+      <a href="#inicio" class="nm-link">Inicio</a>
+      <a href="#fugas" class="nm-link">Fugas</a>
+      <a href="#semanas" class="nm-link">Cómo trabajo</a>
+      <a href="#atelier" class="nm-link">Atelier</a>
+      <a href="blog/el-dinero-que-ya-ganaste.html" class="nm-link">Blog</a>
+      <a href="#contacto" class="nm-link nm-cta">Contacto →</a>
+    </div>
+  </div>
+</div>
+
+<section id="inicio" style="position:relative;width:100%;min-height:100vh;min-height:100svh;background:var(--beige);display:flex;flex-direction:column;overflow:hidden;">
+  <div style="position:absolute;top:-12%;right:-8%;width:52vw;max-width:720px;height:52vw;max-height:720px;background:radial-gradient(closest-side, rgba(168,150,125,.20), rgba(168,150,125,0) 72%);pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:10;flex:1;display:flex;flex-direction:column;width:100%;max-width:1240px;margin:0 auto;padding:clamp(18px,3vw,32px);gap:clamp(20px,3vh,34px);">
+
+    <nav class="nav-instance" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 18px;border:1px solid rgba(33,30,25,.12);border-radius:999px;background:rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+      <a href="#inicio" class="nav-brand">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="flex:none;">
+          <circle cx="13" cy="13" r="9" fill="none" stroke="#211E19" stroke-width="2.4"></circle>
+          <circle cx="21.4" cy="21.4" r="3" fill="#A8967D"></circle>
+        </svg>
+        <span class="nm">Erika Quiroz</span>
+      </a>
+      <div class="nav-desktop">
+        <a href="#inicio" class="nl">Inicio</a>
+        <a href="#fugas" class="nl">Fugas</a>
+        <a href="#semanas" class="nl">Cómo trabajo</a>
+        <a href="#atelier" class="nl">Atelier</a>
+        <a href="blog/el-dinero-que-ya-ganaste.html" class="nl">Blog</a>
+        <a href="#contacto" class="nl nl-cta">Contacto →</a>
+      </div>
+      <button class="hamburger nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#211E19" stroke-width="1.6" stroke-linecap="round"></path></svg>
+      </button>
+    </nav>
+
+    <div class="nav-mobile-menu nav-toggle-menu" style="background:rgba(255,255,255,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+      <a href="#inicio" class="nm-link">Inicio</a>
+      <a href="#fugas" class="nm-link">Fugas</a>
+      <a href="#semanas" class="nm-link">Cómo trabajo</a>
+      <a href="#atelier" class="nm-link">Atelier</a>
+      <a href="blog/el-dinero-que-ya-ganaste.html" class="nm-link">Blog</a>
+      <a href="#contacto" class="nm-link nm-cta">Contacto →</a>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between;align-items:baseline;">
+      <p style="margin:0;flex:1 1 300px;max-width:46ch;color:rgba(33,30,25,.72);font-size:clamp(14px,1.1vw,16px);line-height:1.45;">Ayudo a negocios de servicios a recuperar los ingresos que ya tienen.</p>
+      <p class="hero-align-r" style="margin:0;flex:1 1 260px;max-width:40ch;color:rgba(33,30,25,.72);font-size:clamp(14px,1.1vw,16px);line-height:1.45;">Alcance, precio y plazo cerrados antes de empezar.</p>
+    </div>
+
+    <div class="fadein" style="flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(24px,4vw,56px);padding:clamp(12px,3vh,32px) 0;">
+
+      <div style="flex:1 1 460px;min-width:300px;">
+        <p style="margin:0 0 clamp(14px,2vh,20px);font-size:clamp(19px,1.7vw,22px);font-weight:500;color:#211E19;">Hola, soy Erika.</p>
+
+        <h1 style="margin:0;font-size:clamp(2.7rem,5.4vw,4.7rem);font-weight:700;line-height:.98;letter-spacing:-.035em;color:#211E19;text-wrap:balance;">Te dejo funcionando lo que hoy depende de que alguien <span class="shine">se acuerde</span>.</h1>
+
+        <p style="margin:clamp(20px,2.8vh,30px) 0 0;max-width:52ch;color:rgba(33,30,25,.74);font-size:clamp(15px,1.15vw,17.5px);font-weight:400;line-height:1.52;">Un sistema que contesta a quien te escribe, hace seguimiento a los presupuestos que entregaste y trae de vuelta a los clientes que dejaron de venir. Tres semanas, precio cerrado antes de partir.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,3.4vh,34px);">
+          <a href="#contacto" class="btn-pri2">
+            <span>Quiero saber cuánto estoy perdiendo</span>
+            <span class="cta-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style="flex:none;"><path d="M3 9h11M10 4.5 14.5 9 10 13.5" stroke="#F4F1EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+          </a>
+          <a href="#entregables" class="btn-sec2">Primero cuéntame cómo funciona</a>
+        </div>
+
+        <p style="margin:clamp(20px,2.6vh,26px) 0 0;max-width:50ch;color:rgba(33,30,25,.5);font-size:13.5px;line-height:1.5;">La primera conversación es gratis y dura menos de una hora. Te lleves el trabajo conmigo o no, el diagnóstico es tuyo.</p>
+      </div>
+
+      <div style="flex:0 1 420px;min-width:250px;display:flex;justify-content:center;">
+        <div style="position:relative;width:100%;max-width:410px;aspect-ratio:4 / 5;border-radius:14px;overflow:hidden;background:linear-gradient(160deg, var(--photo-g1) 0%, var(--photo-g2) 100%);border:1px solid rgba(168,150,125,.55);box-shadow:0 24px 48px rgba(33,30,25,.16);">
+          <img src="assets/images/erika-cutout.png" alt="Erika Quiroz" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 16%;">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div style="color:rgba(33,30,25,.8);font-size:15.5px;line-height:1.6;">
+
+  <!-- FUGAS -->
+  <section id="fugas" style="padding:clamp(64px,10vw,132px) 0;background:var(--alt);scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="max-width:760px;margin-bottom:clamp(44px,6vw,60px);">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.1em;color:#806A49;">01</span>
+          <span style="height:1px;width:34px;background:rgba(128,106,73,.45);"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.5);">El problema</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.85rem,3.4vw,2.8rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:#211E19;text-wrap:balance;">Los mismos tres agujeros, en todo negocio de servicios.</h2>
+        <p style="margin:18px 0 0;max-width:60ch;font-size:clamp(1rem,1.3vw,1.14rem);color:rgba(33,30,25,.72);">No importa el rubro. Si tienes clientes que vuelven y un equipo que atiende, estas tres fugas están abiertas ahora mismo.</p>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px 28px;padding:clamp(28px,4vw,44px);border-radius:40px;background:#211E19;box-shadow:inset 0 2px 26px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.05);margin-bottom:20px;">
+        <div style="flex:none;width:120px;font-family:'JetBrains Mono',monospace;font-size:15px;color:#A8967D;font-weight:500;padding-top:4px;">01</div>
+        <div style="flex:1 1 320px;">
+          <h3 style="margin:0 0 10px;font-size:1.28rem;color:#F4F1EA;font-weight:500;letter-spacing:-.01em;">Te escribieron y no alcanzaste a contestar</h3>
+          <p style="margin:0;max-width:60ch;color:rgba(244,241,234,.74);">Estabas atendiendo. El mensaje llegó a las nueve de la noche, en medio de la jornada o un domingo. Cuando respondiste, ya habían llamado a otro.</p>
+          <p style="margin:12px 0 0;font-size:13.5px;color:rgba(244,241,234,.5);font-style:italic;max-width:60ch;">Un taller: preguntan precio y nadie contesta. Una clínica: consultan por Instagram a las once de la noche. Un colegio: un apoderado pregunta por admisión y le responden en tres días.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px 28px;padding:clamp(28px,4vw,44px);border-radius:40px;background:#F4F1EA;border:1px solid rgba(33,30,25,.08);box-shadow:0 12px 32px rgba(33,30,25,.06);margin-bottom:20px;">
+        <div style="flex:none;width:120px;font-family:'JetBrains Mono',monospace;font-size:15px;color:#806A49;font-weight:500;padding-top:4px;">02</div>
+        <div style="flex:1 1 320px;">
+          <h3 style="margin:0 0 10px;font-size:1.28rem;color:#211E19;font-weight:500;letter-spacing:-.01em;">Cotizaste y nadie volvió a llamar</h3>
+          <p style="margin:0;max-width:60ch;color:rgba(33,30,25,.78);">Dedicaste tiempo, evaluaste, entregaste un presupuesto. Te dijeron que lo iban a pensar. Y ahí quedó.</p>
+          <p style="margin:12px 0 0;font-size:13.5px;color:rgba(33,30,25,.5);font-style:italic;max-width:60ch;">Es la fuga más cara de las tres: el trabajo ya lo hiciste. Lo único que faltó fue insistir.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px 28px;padding:clamp(28px,4vw,44px);border-radius:40px;background:#211E19;box-shadow:inset 0 2px 26px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.05);">
+        <div style="flex:none;width:120px;font-family:'JetBrains Mono',monospace;font-size:15px;color:#A8967D;font-weight:500;padding-top:4px;">03</div>
+        <div style="flex:1 1 320px;">
+          <h3 style="margin:0 0 10px;font-size:1.28rem;color:#F4F1EA;font-weight:500;letter-spacing:-.01em;">Vinieron una vez y no volvieron</h3>
+          <p style="margin:0;max-width:60ch;color:rgba(244,241,234,.74);">Tu base de clientes es lo más valioso que tienes, y probablemente vive en un cuaderno, una planilla o la cabeza de alguien. Nadie les avisa que es hora de volver.</p>
+          <p style="margin:12px 0 0;font-size:13.5px;color:rgba(244,241,234,.5);font-style:italic;max-width:60ch;">Mantenciones que se pasan. Tratamientos con ciclo de cuatro meses. Familias que no renuevan y nadie lo detectó a tiempo.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:44px;display:flex;flex-direction:column;gap:12px;">
+        <a href="#contacto" class="link-cta" style="font-size:clamp(1.05rem,1.5vw,1.2rem);">¿Cuál de las tres te suena más? Escríbeme y la revisamos con tus números. →</a>
+        <p style="margin:0;font-size:13px;color:rgba(33,30,25,.5);">Si tienes una clínica dental, hay una calculadora que estima esto en números concretos. <a href="https://dentalgrowstack.com" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(128,106,73,.4);">Calcular →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉN SOY -->
+  <section id="quien-soy" style="padding:clamp(64px,10vw,132px) 0;background:#F4F1EA;scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="max-width:760px;margin-bottom:clamp(40px,5vw,52px);">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <span style="width:6px;height:6px;border-radius:999px;background:#806A49;"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.5);">Quién soy</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.85rem,3.4vw,2.8rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:#211E19;text-wrap:balance;">Quince años arreglando lo que a los negocios les falta.</h2>
+      </div>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,60px);align-items:flex-start;">
+        <div style="flex:0 1 260px;min-width:200px;display:flex;justify-content:center;">
+          <div style="position:relative;width:100%;max-width:240px;aspect-ratio:1 / 1;border-radius:999px;overflow:hidden;background:linear-gradient(160deg, var(--photo-g1) 0%, var(--photo-g2) 100%);border:1px solid rgba(168,150,125,.55);box-shadow:0 18px 36px rgba(33,30,25,.16);">
+            <img src="assets/images/erika-cutout.png" alt="Erika Quiroz" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;transform:scale(1.08);">
+          </div>
+        </div>
+        <div style="flex:1 1 420px;">
+          <div style="display:flex;flex-direction:column;gap:24px;max-width:62ch;font-size:clamp(14px,1.05vw,16px);line-height:1.625;color:rgba(33,30,25,.82);">
+            <p style="margin:0;">Soy ingeniera civil industrial. Llevo quince años metida en operaciones y procesos — primero dentro de empresas, después por mi cuenta, construyendo lo que les faltaba.</p>
+            <p style="margin:0;">Empecé a hacer esto porque me tocó ver el mismo cuadro muchas veces: negocios buenos, con clientes que vuelven y equipos que se esfuerzan, perdiendo plata en cosas que nadie alcanzaba a hacer. No por flojera. Por falta de tiempo y de algo que se acuerde por ellos.</p>
+            <p style="margin:0;">No vendo software ni licencias, y no te dejo con una herramienta que tienes que aprender por tu cuenta. Construyo lo que tu negocio necesita, te lo dejo andando y te enseño a operarlo.</p>
+            <p style="margin:0;">Trabajo con pocos clientes a la vez. Por eso puedo cerrar alcance, precio y plazo antes de empezar — y por eso a veces digo que no.</p>
+          </div>
+          <!-- pendiente: línea humana de Erika (una frase personal, sin relación con el trabajo) — ver PROJECT.md. No se muestra un recuadro placeholder en vivo porque es una nota editorial, no copy de cliente. -->
+          <div style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(33,30,25,.14);font-size:15px;">
+            <p style="margin:0;color:#211E19;font-weight:500;">Erika Quiroz — Santiago, Chile</p>
+            <a href="mailto:hola@eriquiroz.com" style="display:inline-block;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:13.5px;">hola@eriquiroz.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ TE DEJO FUNCIONANDO -->
+  <section id="entregables" style="padding:clamp(64px,10vw,132px) 0;background:var(--alt);scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="max-width:760px;margin-bottom:clamp(44px,6vw,60px);">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.1em;color:#806A49;">02</span>
+          <span style="height:1px;width:34px;background:rgba(128,106,73,.45);"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.5);">Qué te dejo</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.85rem,3.4vw,2.8rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:#211E19;text-wrap:balance;">Tres cosas quedan funcionando.</h2>
+        <p style="margin:16px 0 0;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.04em;color:rgba(33,30,25,.6);">Tres semanas · Precio cerrado antes de empezar</p>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px 28px;padding:clamp(28px,4vw,44px);border-radius:40px;background:#211E19;box-shadow:inset 0 2px 26px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.05);margin-bottom:20px;">
+        <div style="flex:none;width:120px;font-family:'JetBrains Mono',monospace;font-size:15px;color:#A8967D;font-weight:500;padding-top:4px;">01</div>
+        <div style="flex:1 1 320px;">
+          <h3 style="margin:0 0 9px;font-size:1.28rem;color:#F4F1EA;font-weight:500;letter-spacing:-.01em;">Te dejo respondiendo</h3>
+          <p style="margin:0;max-width:62ch;color:rgba(244,241,234,.74);">Cuando alguien te escribe —a la hora que sea, por donde sea— recibe respuesta en segundos, con tu información y tu forma de hablar. Lo que no se puede resolver solo te llega ordenado y con contexto, no como una notificación más.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px 28px;padding:clamp(28px,4vw,44px);border-radius:40px;background:#F4F1EA;border:1px solid rgba(33,30,25,.08);box-shadow:0 12px 32px rgba(33,30,25,.06);margin-bottom:20px;">
+        <div style="flex:none;width:120px;font-family:'JetBrains Mono',monospace;font-size:15px;color:#806A49;font-weight:500;padding-top:4px;">02</div>
+        <div style="flex:1 1 320px;">
+          <h3 style="margin:0 0 9px;font-size:1.28rem;color:#211E19;font-weight:500;letter-spacing:-.01em;">Te dejo persiguiendo</h3>
+          <p style="margin:0;max-width:62ch;color:rgba(33,30,25,.78);">Cada presupuesto que entregas entra en un seguimiento que corre solo, con el ritmo que definamos. Nada vuelve a quedar en "lo voy a pensar" sin que alguien pregunte de nuevo.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px 28px;padding:clamp(28px,4vw,44px);border-radius:40px;background:#211E19;box-shadow:inset 0 2px 26px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.05);margin-bottom:4px;">
+        <div style="flex:none;width:120px;font-family:'JetBrains Mono',monospace;font-size:15px;color:#A8967D;font-weight:500;padding-top:4px;">03</div>
+        <div style="flex:1 1 320px;">
+          <h3 style="margin:0 0 9px;font-size:1.28rem;color:#F4F1EA;font-weight:500;letter-spacing:-.01em;">Te dejo recuperando</h3>
+          <p style="margin:0;max-width:62ch;color:rgba(244,241,234,.74);">Ordeno tu base de clientes —esté en un cuaderno, una planilla o la cabeza de alguien— y la pongo a trabajar: avisos cuando toca volver, contacto a los que llevan tiempo sin aparecer.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:56px;padding-top:36px;border-top:1px solid rgba(33,30,25,.14);">
+        <h4 style="margin:0 0 20px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(33,30,25,.5);font-weight:500;">Además, incluido</h4>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;max-width:62ch;"><svg width="14" height="14" viewBox="0 0 100 100" style="flex:none;margin-top:5px;"><circle cx="42" cy="42" r="30" fill="none" stroke="#A8967D" stroke-width="11"></circle><circle cx="71" cy="71" r="9" fill="#A8967D"></circle></svg><span style="font-size:15px;">Un panel donde ves en vivo qué está entrando, qué se está siguiendo y cuánto recuperaste.</span></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;max-width:62ch;"><svg width="14" height="14" viewBox="0 0 100 100" style="flex:none;margin-top:5px;"><circle cx="42" cy="42" r="30" fill="none" stroke="#A8967D" stroke-width="11"></circle><circle cx="71" cy="71" r="9" fill="#A8967D"></circle></svg><span style="font-size:15px;">Le enseño a tu equipo a operarlo, para que no dependan de mí.</span></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;max-width:62ch;"><svg width="14" height="14" viewBox="0 0 100 100" style="flex:none;margin-top:5px;"><circle cx="42" cy="42" r="30" fill="none" stroke="#A8967D" stroke-width="11"></circle><circle cx="71" cy="71" r="9" fill="#A8967D"></circle></svg><span style="font-size:15px;">30 días de ajustes después de que queda andando.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANAS + PRECIO -->
+  <section id="semanas" style="padding:clamp(64px,10vw,132px) 0;background:#F4F1EA;scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="max-width:760px;margin-bottom:clamp(44px,6vw,60px);">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.1em;color:#806A49;">03</span>
+          <span style="height:1px;width:34px;background:rgba(128,106,73,.45);"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.5);">El proceso</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.85rem,3.4vw,2.8rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:#211E19;text-wrap:balance;">Cómo son las tres semanas.</h2>
+      </div>
+
+      <div class="reveal">
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(33,30,25,.14);">
+          <div style="flex:none;width:160px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#806A49;letter-spacing:.04em;padding-top:2px;">SEMANA 1</div>
+          <div style="flex:1 1 320px;font-size:15.5px;max-width:64ch;">Miro cómo funciona tu negocio hoy: por dónde te llegan los clientes, qué se pierde y en qué parte. Al terminar la semana tienes por escrito qué entra y qué queda fuera.</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(33,30,25,.14);">
+          <div style="flex:none;width:160px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#806A49;letter-spacing:.04em;padding-top:2px;">SEMANA 2</div>
+          <div style="flex:1 1 320px;font-size:15.5px;max-width:64ch;">Construyo y pruebo con tus casos reales, no con ejemplos.</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(33,30,25,.14);">
+          <div style="flex:none;width:160px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#806A49;letter-spacing:.04em;padding-top:2px;">SEMANA 3</div>
+          <div style="flex:1 1 320px;font-size:15.5px;max-width:64ch;">Lo dejo andando, le enseño a tu equipo y ajusto en vivo.</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(33,30,25,.14);border-bottom:1px solid rgba(33,30,25,.14);">
+          <div style="flex:none;width:160px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#806A49;letter-spacing:.04em;padding-top:2px;">DESPUÉS</div>
+          <div style="flex:1 1 320px;font-size:15.5px;max-width:64ch;">Te acompaño 30 días más, incluidos.</div>
+        </div>
+
+        <!-- pendiente: precio piso real — nota "reemplaza el piso de precio" del borrador no se muestra en vivo, es editorial -->
+        <div style="margin-top:48px;background:var(--cream-card);border:1px solid rgba(168,150,125,.5);border-radius:14px;padding:clamp(28px,4vw,44px);">
+          <p style="margin:0;font-size:clamp(1.35rem,2.6vw,1.9rem);color:#211E19;font-weight:500;letter-spacing:-.01em;">Desde <span style="border-bottom:2px dashed rgba(128,106,73,.7);color:#806A49;padding-bottom:2px;">$·······</span> + IVA, cerrado antes de empezar.</p>
+          <p style="margin:16px 0 0;font-size:15.5px;color:rgba(33,30,25,.72);max-width:60ch;line-height:1.55;">Te doy el precio en la primera conversación y queda por escrito. No cobro por hora. Lo que no está en el alcance escrito no lo cobro ni lo hago — si aparece algo nuevo, te paso un precio aparte y tú decides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS -->
+  <section id="casos" style="padding:clamp(64px,10vw,132px) 0;background:var(--alt);scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="max-width:760px;margin-bottom:clamp(40px,5vw,48px);">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.1em;color:#806A49;">04</span>
+          <span style="height:1px;width:34px;background:rgba(128,106,73,.45);"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.5);">La prueba</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.85rem,3.4vw,2.8rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:#211E19;text-wrap:balance;">Lo que he construido.</h2>
+        <p style="margin:18px 0 0;max-width:62ch;font-size:clamp(1rem,1.3vw,1.1rem);color:rgba(33,30,25,.72);">Casi todo lo que he hecho corre dentro de empresas que no publican con quién trabajan. Si quieres ver un caso completo —con nombre, con números y con lo que salió mal también— escríbeme y te lo muestro en la llamada.</p>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:14px 40px;padding:22px 0 30px;margin-bottom:8px;border-top:1px solid rgba(33,30,25,.14);border-bottom:1px solid rgba(33,30,25,.14);">
+        <div style="flex:1 1 160px;"><div style="font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,3vw,2rem);color:#211E19;font-weight:500;">15 años</div><div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:rgba(33,30,25,.55);margin-top:4px;">en operaciones y procesos</div></div>
+        <div style="flex:1 1 160px;"><div style="font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,3vw,2rem);color:#211E19;font-weight:500;"><span style="border-bottom:2px dashed rgba(128,106,73,.6);">__</span> proyectos</div><div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:rgba(33,30,25,.55);margin-top:4px;">entregados y funcionando</div></div>
+        <div style="flex:1 1 160px;"><div style="font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,3vw,2rem);color:#211E19;font-weight:500;"><span style="border-bottom:2px dashed rgba(128,106,73,.6);">__</span> rubros</div><div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:rgba(33,30,25,.55);margin-top:4px;">distintos</div></div>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;">
+        <div style="flex:1 1 340px;display:flex;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid rgba(33,30,25,.14);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#806A49;flex:none;">01</span><span style="font-size:15px;color:#211E19;font-weight:500;">Chatbot en producción — atiende a toda hora y deriva a una persona cuando corresponde.</span></div>
+        <div style="flex:1 1 340px;display:flex;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid rgba(33,30,25,.14);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#806A49;flex:none;">02</span><span style="font-size:15px;color:#211E19;font-weight:500;">Sistema comercial completo — captación, seguimiento y ficha de cliente en un solo lugar.</span></div>
+        <div style="flex:1 1 340px;display:flex;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid rgba(33,30,25,.14);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#806A49;flex:none;">03</span><span style="font-size:15px;color:#211E19;font-weight:500;">Campañas activas — gestión y optimización de publicidad en marcha.</span></div>
+        <div style="flex:1 1 340px;display:flex;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid rgba(33,30,25,.14);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#806A49;flex:none;">04</span><span style="font-size:15px;color:#211E19;font-weight:500;">Aplicación de licitaciones públicas — lee y analiza las bases automáticamente.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS -->
+  <section id="preguntas" style="padding:clamp(64px,10vw,132px) 0;background:#F4F1EA;scroll-margin-top:90px;">
+    <div style="max-width:820px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="margin-bottom:clamp(36px,5vw,48px);">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <span style="width:6px;height:6px;border-radius:999px;background:#806A49;"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.5);">Preguntas</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.85rem,3.4vw,2.8rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:#211E19;text-wrap:balance;">Preguntas que me hacen.</h2>
+      </div>
+      <!-- pendiente: confirmar con Erika las respuestas 5, 6 y 7 — contienen compromisos que Claude propuso sin confirmar, ver PROJECT.md -->
+      <div class="reveal" style="border-top:1px solid rgba(33,30,25,.14);">
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿Vas a reemplazar a mi equipo?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">No. Respondo primero y filtro. Las conversaciones que importan siguen siendo de ustedes.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿De dónde salen las respuestas?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">Solo de la información que tú apruebas. Si algo no está en ese material, no se inventa nada: se deriva a una persona.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿Me vas a traer clientes nuevos?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">No hago publicidad para captar. Recupero los que ya te llegaron y se estaban perdiendo. Si lo que necesitas es captación, te lo digo de frente y te derivo.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿Qué necesito tener listo antes de partir?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">Poco: por dónde te escriben hoy, tus precios o presupuestos tipo, y quién de tu equipo lo va a operar. El resto lo armo yo.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿Y si en tres semanas no está listo?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">El alcance se cierra antes de partir justamente para que eso no pase. Si el atraso es mío, lo termino igual sin cobrarte más.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿Qué pasa después de los 30 días?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">Queda tuyo y funcionando, operado por tu equipo. Si quieres que siga a cargo, lo conversamos aparte. No dejo nada amarrado a mí.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(33,30,25,.14);">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:1.08rem;color:#211E19;font-weight:500;"><span>¿Por qué no es más barato?</span><span class="faq-icon">+</span></summary>
+          <p style="margin:0 0 22px;max-width:66ch;color:rgba(33,30,25,.78);">Porque no te vendo una herramienta para que la configures tú. Construyo sobre tu operación, la pruebo con tus casos y te la dejo andando. Si lo que buscas es una licencia mensual barata, hay opciones mejores que yo y te las nombro.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIER -->
+  <section id="atelier" style="padding:clamp(64px,10vw,132px) 0;background:var(--alt);scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <div class="reveal" style="background:#F4F1EA;border:1px solid rgba(33,30,25,.12);border-radius:14px;padding:clamp(32px,5vw,64px);">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#806A49;display:block;margin-bottom:8px;">Atelier Digital</span>
+        <h3 style="margin:0;font-size:clamp(1.5rem,2.6vw,2rem);color:#211E19;font-weight:500;letter-spacing:-.01em;">Para negocios que ya tienen lo básico resuelto.</h3>
+        <div style="max-width:66ch;margin-top:22px;font-size:15.5px;color:rgba(33,30,25,.82);">
+          <p style="margin:0;">Hay empresas que ya responden bien, ya hacen seguimiento y ya tienen sus sistemas andando. Necesitan otra cosa: una consultoría a la medida, un producto digital propio, o automatización sobre lo que ya existe y nadie más se atreve a tocar.</p>
+          <p style="margin:14px 0 0;">Eso lo trabajo en el Atelier. Proyectos únicos, definidos caso a caso, pocos a la vez.</p>
+        </div>
+        <p style="margin:26px 0 0;font-size:15px;color:#211E19;font-weight:500;">Proyectos desde USD 1.500 <span style="font-family:'JetBrains Mono',monospace;color:rgba(33,30,25,.5);font-weight:400;font-size:13.5px;">— evalúo cada proyecto antes de aceptarlo, no tomo todos.</span></p>
+
+        <form class="field2" id="atelier-form" style="margin-top:44px;padding-top:36px;border-top:1px solid rgba(33,30,25,.14);display:grid;gap:18px;max-width:560px;">
+          <div>
+            <label for="q1">¿Qué tienes funcionando hoy?</label>
+            <textarea id="q1" name="q1" rows="2"></textarea>
+          </div>
+          <div>
+            <label for="q2">¿Qué necesitas que pase y no está pasando?</label>
+            <textarea id="q2" name="q2" rows="2"></textarea>
+          </div>
+          <div>
+            <label for="q3">¿Qué presupuesto tienes considerado?</label>
+            <input id="q3" name="q3" type="text">
+          </div>
+          <div>
+            <button type="submit" class="btn-pri2" style="border:none;cursor:pointer;">Cuéntame tu proyecto</button>
+          </div>
+          <p style="margin:0;font-size:12.5px;color:rgba(33,30,25,.5);">Se abre un correo dirigido a hola@eriquiroz.com con tus respuestas — revísalo antes de enviarlo.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section id="contacto" style="padding:clamp(76px,11vw,148px) 0;background:var(--cierre-bg);border-top:1px solid rgba(168,150,125,.4);scroll-margin-top:90px;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,40px);">
+      <span class="reveal" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#806A49;display:block;margin-bottom:18px;">Siguiente paso</span>
+      <h2 class="reveal" style="margin:0;color:#211E19;font-size:clamp(1.9rem,4vw,3rem);max-width:16ch;line-height:1.08;font-weight:500;letter-spacing:-.02em;">Partamos por saber cuánto estás perdiendo</h2>
+      <p class="reveal" style="margin:22px 0 0;color:rgba(33,30,25,.7);max-width:52ch;font-size:15.5px;">La primera conversación es una revisión de tus tres fugas con tus números, no con estimaciones genéricas. Es gratis y dura menos de una hora. Trabajes conmigo o no, el diagnóstico te lo llevas igual.</p>
+      <div class="reveal" style="display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;align-items:center;">
+        <a href="mailto:hola@eriquiroz.com" class="btn-pri2">Conversemos</a>
+      </div>
+      <p class="reveal" style="margin:22px 0 0;font-family:'JetBrains Mono',monospace;font-size:13.5px;color:rgba(33,30,25,.55);"><a href="mailto:hola@eriquiroz.com" style="color:inherit;">hola@eriquiroz.com</a></p>
+
+      <div class="reveal" style="margin-top:52px;padding-top:36px;border-top:1px solid rgba(168,150,125,.4);max-width:460px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#806A49;display:block;margin-bottom:20px;">O escríbeme directo</span>
+        <form class="field2" id="contactForm" style="display:grid;gap:16px;">
+          <input type="hidden" name="access_key" value="48c71e32-71e7-42de-aef1-5e02b1bb3bf7">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="subject" value="Nuevo mensaje desde eriquiroz.com">
+          <div>
+            <label for="cf-name">Nombre</label>
+            <input id="cf-name" name="name" type="text" placeholder="Tu nombre" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="cf-msg">Mensaje</label>
+            <textarea id="cf-msg" name="message" rows="3" placeholder="Cuéntame qué está pasando en tu negocio." required></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn-pri2" style="border:none;cursor:pointer;">Enviar mensaje</button>
+          </div>
+          <p id="cfNote" style="margin:0;font-size:12.5px;color:rgba(33,30,25,.6);">Te respondo en menos de 24 horas.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#211E19;color:#F4F1EA;">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(52px,7vw,80px) clamp(22px,4vw,40px) 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:40px 60px;justify-content:space-between;">
+        <div style="flex:1 1 300px;max-width:400px;">
+          <p style="margin:0 0 22px;font-family:'Hanken Grotesk',sans-serif;font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#F4F1EA;">¿Conversamos tus tres fugas?</p>
+          <a href="mailto:hola@eriquiroz.com" class="btn-pri2-inv"><span>Conversemos</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style="flex:none;"><path d="M3 9h11M10 4.5 14.5 9 10 13.5" stroke="#211E19" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        </div>
+        <div style="display:flex;gap:48px 64px;flex-wrap:wrap;">
+          <nav style="display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.4);margin-bottom:2px;">Recorrido</span>
+            <a href="#fugas" class="footer-link" style="font-size:14.5px;">Las fugas</a>
+            <a href="#entregables" class="footer-link" style="font-size:14.5px;">Qué te dejo</a>
+            <a href="#semanas" class="footer-link" style="font-size:14.5px;">El proceso</a>
+            <a href="#casos" class="footer-link" style="font-size:14.5px;">Casos</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.4);margin-bottom:2px;">Más</span>
+            <a href="#quien-soy" class="footer-link" style="font-size:14.5px;">Quién soy</a>
+            <a href="#preguntas" class="footer-link" style="font-size:14.5px;">Preguntas</a>
+            <a href="#atelier" class="footer-link" style="font-size:14.5px;">Atelier</a>
+            <a href="blog/el-dinero-que-ya-ganaste.html" class="footer-link" style="font-size:14.5px;">Blog</a>
+          </nav>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(44px,6vw,64px);padding:24px 0;border-top:1px solid rgba(244,241,234,.14);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden="true"><circle cx="48" cy="48" r="30" fill="none" stroke="#F4F1EA" stroke-width="8"></circle><circle cx="71" cy="71" r="6.5" fill="#A8967D"></circle></svg>
+          <span style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:500;letter-spacing:-.01em;color:#F4F1EA;">Erika Quiroz</span>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:rgba(244,241,234,.5);">Santiago, Chile · © 2026</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // mobile menu toggle, shared by both nav instances (floating + hero inline)
+  document.querySelectorAll('.nav-instance').forEach(nav => {
+    const btn = nav.querySelector('.nav-toggle');
+    const menu = nav.parentElement.querySelector('.nav-toggle-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  });
+
+  // floating nav shows once scrolled past ~72% of viewport height
+  const floatNav = document.querySelector('.floating-nav');
+  const onScrollNav = () => {
+    floatNav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.72);
+  };
+  window.addEventListener('scroll', onScrollNav, { passive: true });
+  onScrollNav();
+
+  // reveal on scroll
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealItems = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    revealItems.forEach(n => {
+      const sec = n.closest('section');
+      const sibs = sec ? Array.from(sec.querySelectorAll('.reveal')) : [n];
+      const delay = Math.min(sibs.indexOf(n), 4) * 0.09;
+      n.style.transitionDelay = delay + 's';
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealItems.forEach(el => io.observe(el));
+  } else {
+    revealItems.forEach(el => el.classList.add('in'));
+  }
+
+  // Atelier form -> mailto
+  const form = document.getElementById('atelier-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q1 = document.getElementById('q1').value.trim();
+    const q2 = document.getElementById('q2').value.trim();
+    const q3 = document.getElementById('q3').value.trim();
+    const body = [
+      '¿Qué tienes funcionando hoy?', q1 || '(sin responder)', '',
+      '¿Qué necesitas que pase y no está pasando?', q2 || '(sin responder)', '',
+      '¿Qué presupuesto tienes considerado?', q3 || '(sin responder)'
+    ].join('\n');
+    const mailto = 'mailto:hola@eriquiroz.com?subject=' + encodeURIComponent('Proyecto Atelier Digital') +
+      '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+  });
+
+  // Contact form -> Web3Forms
+  const contactForm = document.getElementById('contactForm');
+  const cfNote = document.getElementById('cfNote');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    cfNote.textContent = 'Enviando…';
+    cfNote.style.color = 'rgba(33,30,25,.6)';
+    try {
+      const data = Object.fromEntries(new FormData(contactForm).entries());
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (json.success) {
+        cfNote.textContent = 'Gracias por escribirme. Te respondo en menos de 24 horas.';
+        cfNote.style.color = '#4d7a55';
+        contactForm.reset();
+      } else {
+        cfNote.textContent = 'No se pudo enviar. Escríbeme directo a hola@eriquiroz.com';
+        cfNote.style.color = '#a34840';
+      }
+    } catch (err) {
+      cfNote.textContent = 'No se pudo enviar. Escríbeme directo a hola@eriquiroz.com';
+      cfNote.style.color = '#a34840';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

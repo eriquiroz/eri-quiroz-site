@@ -1,0 +1,9 @@
+# Solo se publica el sitio. Documentación, brief, archivo y referencias de diseño
+# quedan en el repo pero no se suben a Vercel (no deben ser públicos en eriquiroz.com).
+/*
+!*.html
+!vercel.json
+!assets
+!recursos
+/assets/originals
+/assets/images
