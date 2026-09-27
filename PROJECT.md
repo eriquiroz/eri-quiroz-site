@@ -14,6 +14,7 @@ Repo `eriquiroz/eri-quiroz-site`, rama `master`, proyecto Vercel `eri-quiroz-sit
 
 ```
 index.html              el sitio
+assets/erika-quiroz.jpg foto (960×1200, 4:5, sin metadatos)
 assets/fonts/           Hanken Grotesk (normal variable + itálica) e IBM Plex Mono, subconjunto latino, licencia OFL
 vercel.json             redirecciones del blog anterior a /
 .vercelignore           lista de lo que se publica
@@ -35,11 +36,10 @@ Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
 1. **PDF de la lista de verificación** (la lista está escrita; falta maquetarla). Guardarlo en `recursos/`.
 2. **Servicio de envío de correo** (ver arriba).
-3. **Foto** 4:5, mín. 800×1000 → `assets/erika-quiroz.jpg`. La foto del sitio anterior (fondo amarillo, con marca de agua de edición en la esquina) no se usó por no calzar con el diseño.
-4. **Enlace de HEAT Academy** (el nombre aparece en el texto; solo falta el enlace).
-5. **Enlace con referido de Imperio Agéntico** (el nombre aparece como texto sin enlace).
-6. **URL del perfil de LinkedIn** para el pie de página.
-7. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
-8. **og:image** 1200×630 para cuando se comparte el enlace.
-9. **Verificar** que `https://uchile.cl/cursos/240598` es la página correcta del curso (no se pudo abrir desde el entorno de construcción).
-10. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+3. **Enlace de HEAT Academy** (el nombre aparece en el texto; solo falta el enlace).
+4. **Enlace con referido de Imperio Agéntico** (el nombre aparece como texto sin enlace).
+5. **URL del perfil de LinkedIn** para el pie de página.
+6. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
+7. **og:image** 1200×630 para cuando se comparte el enlace.
+8. **Verificar** que `https://uchile.cl/cursos/240598` es la página correcta del curso (no se pudo abrir desde el entorno de construcción).
+9. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
