@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Lista de verificación antes de aplicar IA a un proceso</title>
+<meta name="author" content="Erika Quiroz">
+<!--
+  Fuente del PDF recursos/lista-verificacion-ia.pdf. No se publica (fuentes/ queda fuera de .vercelignore).
+  Mismo sistema visual que index.html. Para regenerar el PDF: ver PROJECT.md, "Lista de verificación".
+-->
+<style>
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 600;src:url(/assets/fonts/hanken-grotesk-latin.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-style:italic;font-weight:400;src:url(/assets/fonts/hanken-grotesk-italic-latin.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;src:url(/assets/fonts/ibm-plex-mono-400-latin.woff2) format('woff2')}
+
+:root{
+  --papel:#fdfbf9; --arena:#f7efe3; --linea:#e3ddd3;
+  --tinta:#261d16; --gris:#5b5048; --placeholder:#7b6f66;
+  --azul:#005f7b; --error:#ac312a;
+  --sans:'Hanken Grotesk',Helvetica,Arial,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@page{size:A4;margin:14mm 17mm 13mm}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;color:var(--tinta);font-family:var(--sans);font-size:10pt;line-height:1.5}
+h1,h2,h3,p{margin:0}
+p{text-wrap:pretty}
+.pagina{break-after:page}
+.pagina:last-child{break-after:auto}
+
+/* Portada */
+h1{font-size:25pt;line-height:1.1;font-weight:600;letter-spacing:-0.025em;text-wrap:balance;max-width:16em;margin-bottom:14pt}
+.intro{display:grid;gap:7pt;max-width:60em}
+.intro p:first-child{font-size:12pt;line-height:1.45}
+.intro p + p{color:var(--gris)}
+.intro strong{color:var(--tinta);font-weight:600}
+
+/* Paso */
+.paso{margin-top:16pt}
+.paso__cab{display:flex;align-items:baseline;gap:9pt;padding-top:9pt;border-top:1.5px solid var(--tinta)}
+.paso__num{font-family:var(--mono);font-size:10pt;color:var(--gris)}
+.paso h2{font-size:17pt;line-height:1.2;font-weight:600;letter-spacing:-0.02em}
+.paso__por-que{margin-top:5pt;color:var(--gris)}
+
+/* Pregunta */
+.pregunta{margin-top:9pt;break-inside:avoid}
+.pregunta__cab{display:grid;grid-template-columns:22pt minmax(0,1fr);align-items:baseline}
+.pregunta__num{font-family:var(--mono);font-size:8.5pt;color:var(--gris)}
+.pregunta h3{font-size:10.5pt;line-height:1.4;font-weight:600}
+.pregunta__cuerpo{margin-left:22pt;display:grid;gap:5pt;margin-top:4pt}
+.aclaracion{font-size:9pt;color:var(--gris)}
+.subpregunta{margin-top:3pt}
+
+/* Campos para escribir */
+.campos{display:flex;flex-wrap:wrap;gap:7pt 18pt}
+.campo{flex:1 1 0;min-width:0;display:flex;align-items:flex-end;gap:6pt;font-size:9pt;color:var(--gris);white-space:nowrap}
+.campo::after{content:"";flex:1 1 auto;min-width:30pt;height:14pt;border-bottom:1px solid var(--placeholder)}
+.campo--solo{flex-basis:100%}
+.campo--alto::after{height:26pt}
+
+/* Opciones para marcar */
+.opciones{display:flex;flex-wrap:wrap;gap:2pt 20pt}
+.opciones--columna{flex-direction:column}
+.opcion{display:flex;align-items:baseline;gap:7pt}
+.casilla{flex:none;width:9.5pt;height:9.5pt;border:1.2px solid var(--tinta);border-radius:2pt;transform:translateY(1pt)}
+
+/* Recuadros de decisión */
+.aviso{margin-top:9pt;padding:7pt 12pt;border-radius:8pt;background:var(--arena);break-inside:avoid}
+.aviso .etiqueta{font-family:var(--mono);font-size:8pt;letter-spacing:0.02em;display:block;margin-bottom:2pt}
+.aviso--resolver .etiqueta{color:var(--azul)}
+.aviso--descartar .etiqueta{color:var(--error)}
+.aviso--condicion .etiqueta{color:var(--tinta)}
+.nota{margin-top:10pt;padding-left:22pt}
+.nota strong{font-weight:600}
+
+/* Encabezado de la ficha */
+.ficha{display:flex;gap:18pt;margin-top:16pt;padding:10pt 0 2pt;border-top:1px solid var(--linea)}
+.ficha .campo{font-family:var(--mono);font-size:8pt;letter-spacing:0.04em;text-transform:uppercase}
+.ficha .campo:first-child{flex:3}
+
+/* Registro */
+.registro .opcion{margin-top:11pt}
+.registro .opcion > div{flex:1}
+.blanco{display:inline-block;width:62pt;border-bottom:1px solid var(--placeholder);height:11pt;vertical-align:baseline}
+.blanco--corto{width:26pt}
+.linea-libre{height:18pt;border-bottom:1px solid var(--placeholder);margin-top:2pt}
+.cierre{margin-top:16pt;display:grid;gap:7pt;color:var(--gris)}
+.cierre p:first-child{color:var(--tinta);font-weight:600}
+.firma-decision{margin-top:18pt}
+
+.pie{margin-top:26pt;padding-top:9pt;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:baseline;font-size:9pt;color:var(--gris)}
+.pie strong{color:var(--tinta);font-weight:600}
+.pie em{font-size:11pt;color:var(--tinta)}
+</style>
+</head>
+<body>
+
+<!-- ============ Página 1 ============ -->
+<section class="pagina">
+  <h1>Lista de verificación antes de aplicar IA a un proceso</h1>
+  <div class="intro">
+    <p>Esta lista sirve para decidir, antes de probar cualquier herramienta, si un proceso de tu trabajo vale la pena intervenir con inteligencia artificial, con qué tipo de solución, y cómo saber si aportó.</p>
+    <p>Aplica un principio de ingeniería de procesos: primero el orden operativo, después la tecnología. Por eso las preguntas van del proceso a la herramienta, y no al revés.</p>
+    <p>Úsala sobre un proceso concreto, uno a la vez, con lápiz en mano. Responde cada pregunta y anota lo que te pida. En cada paso hay dos formas de detenerse: <strong>resolver primero</strong> (hay algo que arreglar antes de seguir) o <strong>descartar</strong> (no conviene intervenir este proceso con IA, y eso también es una decisión válida).</p>
+  </div>
+
+  <div class="ficha">
+    <span class="campo">Proceso que voy a evaluar</span>
+    <span class="campo">Fecha</span>
+  </div>
+
+  <div class="paso">
+    <div class="paso__cab"><span class="paso__num">Paso 1</span><h2>Describe y mide el proceso</h2></div>
+    <p class="paso__por-que">Si no puedes describir el proceso con precisión ni ponerle un número, todavía no sabes qué quieres mejorar ni podrás saber si mejoró.</p>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">1.1</span><h3>¿Sé qué entra al proceso, qué sale y quién lo hace?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+        <div class="campos"><span class="campo">Entrada</span><span class="campo">Salida</span><span class="campo">Responsable</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">1.2</span><h3>¿Con qué frecuencia ocurre?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo" style="flex:0 1 55%">Veces por semana (o por mes)</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">1.3</span><h3>¿Cuánto tiempo toma cada vez?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo">Tiempo por ejecución</span><span class="campo">Tiempo total semanal (1.2 × 1.3)</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">1.4</span><h3>¿Qué pasa cuando sale mal? ¿Cuánto cuesta corregirlo?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo campo--solo">Error más frecuente</span><span class="campo campo--solo">Costo de corregirlo (tiempo, dinero, otro)</span></div>
+      </div>
+    </div>
+
+    <p class="nota"><strong>Línea base.</strong> Los números de 1.3 y 1.4 son tu punto de comparación. Anótalos ahora, antes de cambiar nada.</p>
+
+    <div class="aviso aviso--resolver"><span class="etiqueta">Resolver primero</span>Si no pudiste responder 1.1 o no tienes números, observa el proceso durante una semana y vuelve.</div>
+    <div class="aviso aviso--descartar"><span class="etiqueta">Descartar</span>Si el tiempo total semanal es bajo y el costo del error también, no vale la pena intervenirlo. Hay procesos que conviene dejar como están.</div>
+  </div>
+</section>
+
+<!-- ============ Página 2 ============ -->
+<section class="pagina">
+  <div class="paso" style="margin-top:0">
+    <div class="paso__cab"><span class="paso__num">Paso 2</span><h2>Comprueba que funciona sin IA</h2></div>
+    <p class="paso__por-que">La IA rinde sobre procesos que ya tienen un orden. Sobre uno desordenado, solo acelera el desorden.</p>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">2.1</span><h3>¿El proceso tiene pasos claros, siempre los mismos?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+        <div class="campos"><span class="campo campo--solo campo--alto">Pasos</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">2.2</span><h3>¿Dos personas distintas lo harían de la misma forma y llegarían al mismo resultado?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">2.3</span><h3>¿Los datos o documentos que usa llegan siempre en el mismo formato?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+      </div>
+    </div>
+
+    <div class="aviso aviso--resolver"><span class="etiqueta">Resolver primero</span>Si respondiste no a alguna, lo que falta es una regla, una plantilla o un formato común, no IA. Arregla eso y vuelve a medir. Con frecuencia el problema se resuelve aquí y los pasos siguientes ya no hacen falta.</div>
+  </div>
+
+  <div class="paso">
+    <div class="paso__cab"><span class="paso__num">Paso 3</span><h2>Evalúa el riesgo</h2></div>
+    <p class="paso__por-que">Antes de elegir una herramienta, hay que saber qué le vas a entregar y qué pasa si se equivoca.</p>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">3.1</span><h3>¿Qué información entra a la herramienta?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones opciones--columna">
+          <span class="opcion"><span class="casilla"></span>Solo información propia o pública</span>
+          <span class="opcion"><span class="casilla"></span>Información de terceros (clientes, pacientes, personal) o confidencial de la organización</span>
+        </div>
+        <div class="campos"><span class="campo campo--solo">Detalle</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">3.2</span><h3>Si la herramienta se equivoca, ¿el error se detecta antes de que tenga consecuencias?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones opciones--columna">
+          <span class="opcion"><span class="casilla"></span>Sí, alguien revisa la salida antes de usarla</span>
+          <span class="opcion"><span class="casilla"></span>No, la salida se usa directamente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">3.3</span><h3>¿El error es reversible?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="opciones opciones--columna">
+          <span class="opcion"><span class="casilla"></span>Sí, se corrige sin costo mayor</span>
+          <span class="opcion"><span class="casilla"></span>No, tiene consecuencias difíciles de deshacer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviso aviso--descartar"><span class="etiqueta">Descartar</span>Si entra información de terceros o confidencial y no tienes autorización ni una herramienta aprobada por tu organización para ese uso, no sigas. Esta es la razón más frecuente por la que un proceso no debe intervenirse, y la que más se olvida.</div>
+    <div class="aviso aviso--condicion"><span class="etiqueta">Condición para seguir</span>Si el error no es reversible, la solución que elijas en el paso 4 debe incluir revisión humana de cada salida. Anótalo: eso reduce el tiempo que vas a ahorrar, y el paso 5 debe medirlo.</div>
+  </div>
+</section>
+
+<!-- ============ Página 3 ============ -->
+<section class="pagina">
+  <div class="paso" style="margin-top:0">
+    <div class="paso__cab"><span class="paso__num">Paso 4</span><h2>Elige la solución más simple</h2></div>
+    <p class="paso__por-que">Entre las opciones disponibles, la correcta suele ser la primera que funciona, no la más sofisticada.</p>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">4.1</span><h3>¿Qué partes del proceso son mecánicas (repetitivas, verificables) y cuáles requieren juicio?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo campo--solo">Mecánicas</span><span class="campo campo--solo">Requieren juicio</span></div>
+        <p class="aclaracion">La IA va a las primeras. Las segundas se quedan con la persona.</p>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">4.2</span><h3>Responde en orden y detente en el primer sí.</h3></div>
+      <div class="pregunta__cuerpo">
+        <div>
+          <p class="subpregunta">¿Una instrucción bien escrita a un asistente de IA resuelve la parte mecánica que más tiempo toma?</p>
+          <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+        </div>
+        <div>
+          <p class="subpregunta">¿Se resuelve conectando herramientas que ya uso, sin programar?</p>
+          <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+        </div>
+        <div>
+          <p class="subpregunta">¿Necesito algo hecho a medida?</p>
+          <div class="opciones"><span class="opcion"><span class="casilla"></span>Sí</span><span class="opcion"><span class="casilla"></span>No</span></div>
+          <p class="aclaracion" style="margin-top:3pt">Si sí: vuelve a revisar las dos anteriores. Un desarrollo propio exige mantención y alguien que lo sostenga cuando falle.</p>
+        </div>
+        <div class="campos"><span class="campo campo--solo">Solución elegida</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">4.3</span><h3>¿Quién mantiene la solución cuando cambie la herramienta, cambien los datos o la persona que la hizo ya no esté?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo campo--solo">Responsable de mantención</span></div>
+      </div>
+    </div>
+
+    <div class="aviso aviso--resolver"><span class="etiqueta">Resolver primero</span>Si no hay responsable de mantención, no tienes una solución; tienes un experimento personal. Está bien para probar, pero no para extender.</div>
+  </div>
+
+  <div class="paso">
+    <div class="paso__cab"><span class="paso__num">Paso 5</span><h2>Prueba, mide y decide</h2></div>
+    <p class="paso__por-que">Aplica primero a un caso, compara contra la línea base y recién ahí decide si se extiende.</p>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">5.1</span><h3>¿Con qué voy a comparar el resultado?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo">Medida (la misma del paso 1)</span><span class="campo">Valor de línea base</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">5.2</span><h3>¿Cuánto va a durar la prueba y con quién?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo">Duración</span><span class="campo">Persona o equipo</span><span class="campo">Fecha de término</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">5.3</span><h3>¿Qué resultado justifica extender, y cuál obliga a detener?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo campo--solo">Extender si</span><span class="campo campo--solo">Detener si</span></div>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta__cab"><span class="pregunta__num">5.4</span><h3>¿Quién decide?</h3></div>
+      <div class="pregunta__cuerpo">
+        <div class="campos"><span class="campo" style="flex:0 1 55%">Decide</span></div>
+      </div>
+    </div>
+
+    <div class="aviso aviso--resolver"><span class="etiqueta">Resolver primero</span>Si alguna respuesta está vacía, defínela antes de empezar. Una prueba sin medida, fecha de término ni criterio de detención no se evalúa; se vuelve costumbre.</div>
+  </div>
+</section>
+
+<!-- ============ Página 4 ============ -->
+<section class="pagina registro">
+  <div class="paso" style="margin-top:0">
+    <div class="paso__cab"><h2>Registro de la decisión</h2></div>
+    <p class="paso__por-que">Marca una y completa.</p>
+
+    <div class="opcion"><span class="casilla"></span><div><strong>Probar.</strong> Llegué al paso 5 con todo definido. Empiezo el <span class="blanco"></span> y reviso el <span class="blanco"></span>.</div></div>
+    <div class="opcion"><span class="casilla"></span><div><strong>Resolver primero.</strong> Me detuve en el paso <span class="blanco blanco--corto"></span>. Lo que hay que arreglar antes es:<div class="linea-libre"></div></div></div>
+    <div class="opcion"><span class="casilla"></span><div><strong>Descartar.</strong> No conviene intervenir este proceso con IA porque:<div class="linea-libre"></div></div></div>
+  </div>
+
+  <div class="cierre">
+    <p>Cualquiera de las tres es un resultado. Descartar con fundamento ahorra más que probar sin criterio.</p>
+    <p>Cuando termine la prueba, vuelve a esta hoja con los números del paso 5. Si la medida mejoró respecto de la línea base, extiende. Si no, deja el proceso como estaba y anota por qué: ese aprendizaje sirve para el siguiente.</p>
+  </div>
+
+  <div class="campos firma-decision"><span class="campo">Decidido por</span><span class="campo" style="flex:0 1 35%">Fecha</span></div>
+
+  <div class="pie"><span><strong>Erika Quiroz</strong> · eriquiroz.com</span><em>Decidir antes de aplicar.</em></div>
+</section>
+
+</body>
+</html>

@@ -20,6 +20,8 @@ vercel.json             redirecciones del blog anterior a /
 .vercelignore           lista de lo que se publica
 brief-eriquiroz.md      brief (manda sobre el contenido)
 reference/diseno-sitio.html   diseño aprobado
+recursos/               PDF publicados (lista de verificación)
+fuentes/                fuente HTML del PDF y script para generarlo; no se publica
 archivo/                sitio anterior (v3) y su material; no se publica
 assets/originals, assets/images   fotos del sitio anterior; no se publican
 ```
@@ -30,12 +32,17 @@ Hoy envía a **Web3Forms** (mismo `access_key` del sitio anterior): cada solicit
 
 El brief pide un servicio de envío de correo que: guarde los contactos fuera de una base propia, envíe la lista automáticamente al suscribirse, y permita más adelante avisos o un boletín sin migrar la lista. Candidatos razonables: MailerLite, Brevo o Kit (todos con plan gratuito, formulario embebible o API, y correo de bienvenida automático con adjunto o enlace). Requiere que Erika cree la cuenta; después basta con reemplazar el `fetch` al final de `index.html`.
 
+## Lista de verificación (PDF)
+
+- Publicada en `https://eriquiroz.com/recursos/lista-verificacion-ia.pdf` (no se enlaza desde la página; es lo que envía el servicio de correo).
+- Fuente: `fuentes/lista-verificacion-ia.html`, con el mismo sistema visual del sitio (A4, 4 páginas). El texto es el de Erika, sin cambios (su versión original está en `archivo/lista-verificacion-ia-original.pdf`).
+- Para regenerar tras editar el texto: desde la raíz, `python3 -m http.server 8765` y en otra terminal `node fuentes/generar-pdf.mjs` (requiere Playwright; con `CHROMIUM=/ruta/a/chrome` si no tiene su navegador descargado). Revisar que siga en 4 páginas.
+
 ## Pendientes para lanzar del todo (solo Erika puede resolverlos)
 
 Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
-1. **PDF de la lista de verificación** (la lista está escrita; falta maquetarla). Guardarlo en `recursos/`.
-2. **Servicio de envío de correo** (ver arriba).
-3. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
-4. **og:image** 1200×630 para cuando se comparte el enlace.
-5. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+1. **Servicio de envío de correo** (ver arriba).
+2. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
+3. **og:image** 1200×630 para cuando se comparte el enlace.
+4. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
