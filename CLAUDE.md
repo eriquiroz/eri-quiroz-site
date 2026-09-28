@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guía para trabajar en este repo. Contexto y pendientes en [PROJECT.md](PROJECT.md). El contenido y las reglas del sitio viven en [brief-eriquiroz.md](brief-eriquiroz.md) — ese documento manda sobre cualquier resumen, incluido este archivo.
+Guía para trabajar en este repo. Contexto, servicios externos, decisiones, tareas frecuentes y pendientes en [PROJECT.md](PROJECT.md). El contenido y las reglas del sitio viven en [brief-eriquiroz.md](brief-eriquiroz.md) — ese documento manda sobre cualquier resumen, incluido este archivo.
 
 ## Qué es este repo
 
@@ -12,7 +12,9 @@ Sitio personal de Erika Quiroz (eriquiroz.com): una sola página estática sobre
 
 `.vercelignore` funciona como lista permitida: solo se suben a Vercel los `.html` de la raíz, `vercel.json`, `assets/` (menos `assets/originals` y `assets/images`, fotos del sitio anterior) y `recursos/`. Todo lo demás (este archivo, PROJECT.md, el brief, `reference/`, `archivo/`) queda en el repo pero **no** es público. Si agregas una carpeta nueva que deba publicarse, agrégala a `.vercelignore` con `!carpeta`.
 
-`vercel.json` redirige `/blog` y `/blog/*` (post del sitio anterior) a `/`.
+`vercel.json` activa `cleanUrls` (por eso `privacidad.html` se sirve en `/privacidad`) y redirige `/blog` y `/blog/*` (post del sitio anterior) a `/`. `www.eriquiroz.com` redirige a `eriquiroz.com` desde la configuración de dominios de Vercel, no desde este archivo.
+
+El DNS se administra en **Hostinger**, no en Vercel. Servicios externos, registros DNS, decisiones y tareas frecuentes: ver PROJECT.md.
 
 ## Fuentes de diseño
 
@@ -34,4 +36,6 @@ Sitio personal de Erika Quiroz (eriquiroz.com): una sola página estática sobre
 - **Foto**: `assets/erika-quiroz.jpg` (960×1200, 4:5, sin metadatos EXIF), en `.foto` dentro de `#inicio`. Para cambiarla, reemplazar el archivo con el mismo tamaño y proporción. Una sola foto en el sitio.
 - **Formulario**: Brevo (ver PROJECT.md, "Formulario de la lista"). La dirección del `action` del formulario es pública (así funcionan los formularios de Brevo), no es un secreto. El envío del PDF lo hace la automatización de bienvenida en Brevo, no el sitio.
 - **Política de privacidad**: si se agrega analítica (p. ej. Google Analytics), archivos de seguimiento o cualquier servicio que trate datos de visitantes, actualizar `privacidad.html` en el mismo cambio (ver PROJECT.md) y pedir a Erika que apruebe el texto nuevo.
+- **Metadatos**: al cambiar el contenido de una página, actualizar su `article:modified_time` y `dateModified` (JSON-LD). No tocar las fechas de publicación.
+- **Imagen para compartir**: si cambia la foto o el mensaje principal, regenerar `assets/og-image.jpg` desde `fuentes/og-image.html`.
 - Antes de dar por terminado un cambio visual, levantarlo en navegador (`python3 -m http.server` desde la raíz; las rutas de fuentes son absolutas `/assets/...`) y revisar escritorio y celular (~390px).
