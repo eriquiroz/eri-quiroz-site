@@ -53,7 +53,12 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 
 - Publicada en `https://eriquiroz.com/recursos/lista-verificacion-ia.pdf` (no se enlaza desde la página; es lo que envía el servicio de correo).
 - Fuente: `fuentes/lista-verificacion-ia.html`, con el mismo sistema visual del sitio (A4, 4 páginas). El texto es el de Erika, sin cambios (su versión original está en `archivo/lista-verificacion-ia-original.pdf`).
-- Para regenerar tras editar el texto: desde la raíz, `python3 -m http.server 8765` y en otra terminal `node fuentes/generar-pdf.mjs` (requiere Playwright; con `CHROMIUM=/ruta/a/chrome` si no tiene su navegador descargado). Revisar que siga en 4 páginas.
+- Para regenerar tras editar el texto: desde la raíz, `python3 -m http.server 8765` y en otra terminal `node fuentes/generar-pdf.mjs` (requiere Playwright; con `CHROMIUM=/ruta/a/chrome` si no tiene su navegador descargado). Después, `python3 fuentes/metadatos-pdf.py` para escribir autor, asunto y palabras clave (Chromium no los pone). Revisar que siga en 4 páginas.
+
+## Metadatos de las páginas
+
+- `index.html` y `privacidad.html` declaran autor (`<meta name="author">`, `article:author` con el LinkedIn) y fechas (`article:published_time` / `article:modified_time`, y `datePublished` / `dateModified` en el JSON-LD), en hora de Chile.
+- **Al cambiar el contenido de una página, actualizar `article:modified_time` y `dateModified`** en esa página. La fecha de publicación no se toca.
 
 ## Imagen para compartir
 
