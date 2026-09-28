@@ -16,7 +16,7 @@ Sitio personal de Erika Quiroz (eriquiroz.com): una sola página estática sobre
 
 ## Fuentes de diseño
 
-- `reference/diseno-sitio.html` — el diseño aprobado (Claude Design). `index.html` es un port fiel; las únicas diferencias son de producción: fuentes alojadas en `assets/fonts/`, formulario conectado a Web3Forms, y los elementos que dependen de un dato pendiente (enlace a política de privacidad) quedan como comentarios `<!-- pendiente: ... -->` en vez de mostrarse vacíos o con `href="#"`.
+- `reference/diseno-sitio.html` — el diseño aprobado (Claude Design). `index.html` es un port fiel; las únicas diferencias son de producción: fuentes alojadas en `assets/fonts/`, formulario conectado a Brevo, y los elementos que dependen de un dato pendiente (enlace a política de privacidad) quedan como comentarios `<!-- pendiente: ... -->` en vez de mostrarse vacíos o con `href="#"`.
 - `archivo/` — el sitio anterior (v3, negocios de servicios / dental) y todo su material. Solo historial: no usar su diseño ni su copy.
 
 ## Reglas de contenido (del brief)
@@ -32,5 +32,5 @@ Sitio personal de Erika Quiroz (eriquiroz.com): una sola página estática sobre
 - **Agregar un recurso**: copiar el bloque comentado `<li class="recurso">` en `#recursos`. Los PDF van en `recursos/`.
 - **Lista de verificación**: el PDF `recursos/lista-verificacion-ia.pdf` se genera desde `fuentes/lista-verificacion-ia.html` (ver PROJECT.md). El texto es de Erika: no cambiarlo sin que ella lo pida; editar el HTML y regenerar, nunca el PDF a mano.
 - **Foto**: `assets/erika-quiroz.jpg` (960×1200, 4:5, sin metadatos EXIF), en `.foto` dentro de `#inicio`. Para cambiarla, reemplazar el archivo con el mismo tamaño y proporción. Una sola foto en el sitio.
-- **Formulario**: Web3Forms, `access_key` hardcodeado (es un identificador público, no un secreto). Mantener el mismo salvo que Erika pida otro. Cuando se elija el servicio de envío de correo definitivo, reemplazar el `fetch` del script al final.
+- **Formulario**: Brevo (ver PROJECT.md, "Formulario de la lista"). La dirección del `action` del formulario es pública (así funcionan los formularios de Brevo), no es un secreto. El envío del PDF lo hace la automatización de bienvenida en Brevo, no el sitio.
 - Antes de dar por terminado un cambio visual, levantarlo en navegador (`python3 -m http.server` desde la raíz; las rutas de fuentes son absolutas `/assets/...`) y revisar escritorio y celular (~390px).

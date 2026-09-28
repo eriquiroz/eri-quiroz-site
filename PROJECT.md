@@ -28,9 +28,14 @@ assets/originals, assets/images   fotos del sitio anterior; no se publican
 
 ## Formulario de la lista
 
-Hoy envía a **Web3Forms** (mismo `access_key` del sitio anterior): cada solicitud llega como correo al buzón asociado a ese formulario, con el asunto "Nueva solicitud de la lista de verificación (eriquiroz.com)". **No envía la lista automáticamente**: mientras no se configure el servicio definitivo, hay que enviarla a mano. La confirmación en pantalla ("La lista va en camino… Si no llega en unos minutos…") es el texto del brief y asume envío automático.
+Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`, dominio autenticado en Brevo).
 
-El brief pide un servicio de envío de correo que: guarde los contactos fuera de una base propia, envíe la lista automáticamente al suscribirse, y permita más adelante avisos o un boletín sin migrar la lista. Candidatos razonables: MailerLite, Brevo o Kit (todos con plan gratuito, formulario embebible o API, y correo de bienvenida automático con adjunto o enlace). Requiere que Erika cree la cuenta; después basta con reemplazar el `fetch` al final de `index.html`.
+- El formulario de `#recursos` hace POST a la dirección del formulario de Brevo (atributo `action` del `<form>`, `…sibforms.com/serve/…?isAjax=1`) con los campos `EMAIL`, `email_address_check` (trampa para bots, vacío) y `locale`.
+- En Brevo: el formulario agrega el contacto a la lista **"Lista de verificación"**, sin confirmación (la cuenta no tiene activados los correos transaccionales). La **automatización de bienvenida** se activa al entrar a esa lista y envía el correo con el enlace al PDF.
+- Si se cambia el formulario en Brevo, copiar la nueva dirección del `action` desde *Compartir → Código HTML* y reemplazarla en `index.html`.
+- Brevo gratis: 300 envíos al día. Suficiente para la lista; un boletín a más de 300 contactos se reparte en varios días o requiere plan pagado.
+- Correo entrante: `hola@eriquiroz.com` se reenvía a Gmail con ImprovMX (registros MX y `v=spf1` en Hostinger). Los registros de Brevo (`brevo-code`, DKIM `brevo1/2._domainkey`, `_dmarc`) conviven con esos; si se agrega otro servicio que pida SPF, combinar en un solo `v=spf1`.
+- DNS: el dominio usa los servidores de Hostinger (no los de Vercel). Todo registro se agrega allá.
 
 ## Lista de verificación (PDF)
 
@@ -42,7 +47,7 @@ El brief pide un servicio de envío de correo que: guarde los contactos fuera de
 
 Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
-1. **Servicio de envío de correo** (ver arriba).
+1. **Prueba real del formulario** en producción: suscribirse, recibir el correo de bienvenida y descargar el PDF.
 2. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
 3. **og:image** 1200×630 para cuando se comparte el enlace.
 4. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.

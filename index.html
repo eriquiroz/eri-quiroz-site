@@ -215,16 +215,14 @@ p,h3{text-wrap:pretty}
               <strong>Listo. Revisa tu correo.</strong>
               <p>La lista va en camino a <span data-correo></span>. Si no llega en unos minutos, revisa la carpeta de correo no deseado.</p>
             </div>
-            <!-- Envío: Web3Forms (mismo access_key del sitio anterior). Cada correo llega como aviso al buzón de Erika.
-                 pendiente: reemplazar por un servicio de envío de correo que mande la lista automáticamente (ver PROJECT.md). -->
-            <form class="form" novalidate>
-              <input type="hidden" name="access_key" value="48c71e32-71e7-42de-aef1-5e02b1bb3bf7">
-              <input type="hidden" name="subject" value="Nueva solicitud de la lista de verificación (eriquiroz.com)">
-              <input type="hidden" name="from_name" value="eriquiroz.com">
-              <input type="checkbox" name="botcheck" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <!-- Envío: formulario de Brevo (cuenta de Erika). El contacto entra a la lista "Lista de verificación"
+                 y la automatización de bienvenida de Brevo le envía el PDF. Ver PROJECT.md, "Formulario de la lista". -->
+            <form class="form" method="post" action="https://ded2c8f0.sibforms.com/serve/MUIFADt4QVIJqDoEt5DPkvJKLiL5VsWWqS9UkOuRH2ECUCi5_FD_1urRd6FDWsfCC5iz6ZyBsWesSOrhPFm80MLiLDdZEFftLSnPbPYK8C9qB2OPT10Nb0nR3Shq6GYAZMzJRwir-QrWcSIP2hTBYNdXeAkM6CJhpucfVrpZrnRYxd2MrUqwEFmf5-ATpaZPZcla4cTWzVvotsiP5g==" novalidate>
+              <input type="text" name="email_address_check" value="" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input type="hidden" name="locale" value="es">
               <label for="correo">Tu correo</label>
               <div class="form__fila">
-                <input id="correo" name="email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@correo.cl" aria-describedby="correo-error" required>
+                <input id="correo" name="EMAIL" type="email" autocomplete="email" inputmode="email" placeholder="nombre@correo.cl" aria-describedby="correo-error" required>
                 <button class="boton" type="submit">Recibir la lista</button>
               </div>
               <p id="correo-error" class="form__error" role="alert" hidden>Revisa el correo: debe tener la forma nombre@correo.cl.</p>
@@ -295,15 +293,21 @@ p,h3{text-wrap:pretty}
     if (!valido(v)) { setError(true); input.focus(); return; }
     btn.disabled = true; btn.textContent = 'Enviando…';
     try {
-      const datos = Object.fromEntries(new FormData(form).entries());
-      datos.email = v;
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(datos)
-      });
-      const json = await res.json();
-      if (!json.success) throw new Error(json.message);
+      const datos = new FormData(form);
+      datos.set('EMAIL', v);
+      const url = form.action + '?isAjax=1';
+      let res;
+      try {
+        res = await fetch(url, { method: 'POST', body: datos });
+      } catch {
+        // Si el navegador no deja leer la respuesta (CORS), el envío igual se hace en modo opaco.
+        await fetch(url, { method: 'POST', body: datos, mode: 'no-cors' });
+      }
+      if (res) {
+        if (!res.ok) throw new Error(res.status);
+        const json = await res.json().catch(() => ({}));
+        if (json.success === false) throw new Error('rechazado');
+      }
       ok.querySelector('[data-correo]').textContent = v;
       form.hidden = true; ok.hidden = false; ok.focus();
     } catch {
