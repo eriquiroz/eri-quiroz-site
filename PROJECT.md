@@ -67,8 +67,8 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 - Fuente: `fuentes/og-image.html`. Regenerar (si cambia la foto o el mensaje) con `python3 -m http.server 8765` y `node fuentes/generar-og.mjs`.
 - LinkedIn guarda en caché la vista previa: tras cambiar la imagen, forzar la actualización en https://www.linkedin.com/post-inspector/ .
 
-## Pendientes para lanzar del todo (solo Erika puede resolverlos)
+## Pendientes
 
-Buscar `pendiente:` en `index.html` para ubicar cada uno.
+Ninguno. Todo lo del brief está resuelto (septiembre 2026), incluidos el encabezado y el "Acerca de" de LinkedIn.
 
-1. Confirmar que el **encabezado** de LinkedIn coincide con el del brief (sección 3). El "Acerca de" ya está actualizado.
+Reservado para cuando exista: enlace al canal de YouTube en el pie de página (comentado en `index.html`).
