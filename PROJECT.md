@@ -42,6 +42,7 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 - Brevo gratis: 300 envíos al día. Suficiente para la lista; un boletín a más de 300 contactos se reparte en varios días o requiere plan pagado.
 - Correo entrante: `hola@eriquiroz.com` se reenvía a Gmail con ImprovMX (registros MX y `v=spf1` en Hostinger). Los registros de Brevo (`brevo-code`, DKIM `brevo1/2._domainkey`, `_dmarc`) conviven con esos; si se agrega otro servicio que pida SPF, combinar en un solo `v=spf1`.
 - DNS: el dominio usa los servidores de Hostinger (no los de Vercel). Todo registro se agrega allá.
+- `www.eriquiroz.com`: dominio del proyecto en Vercel con redirección permanente (308) a `eriquiroz.com`; en Hostinger, `CNAME www → cname.vercel-dns.com` (o el valor que muestre Vercel en *Settings → Domains*).
 
 ## Política de privacidad
 
