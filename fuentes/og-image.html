@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Imagen para compartir</title>
+<!--
+  Fuente de assets/og-image.jpg (1200×630), la imagen que aparece al compartir eriquiroz.com.
+  No se publica (fuentes/ queda fuera de .vercelignore). Para regenerar: ver PROJECT.md.
+  Textos tomados del brief (nombre, mensaje principal, firma).
+-->
+<style>
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 600;src:url(/assets/fonts/hanken-grotesk-latin.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-style:italic;font-weight:400;src:url(/assets/fonts/hanken-grotesk-italic-latin.woff2) format('woff2')}
+:root{--papel:#fdfbf9;--arena:#f7efe3;--tinta:#261d16;--gris:#5b5048;--azul:#005f7b}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1200px;height:630px;overflow:hidden;background:var(--papel);color:var(--tinta);font-family:'Hanken Grotesk',Helvetica,Arial,sans-serif}
+.lienzo{display:flex;align-items:center;gap:64px;height:100%;padding:56px 56px 56px 80px}
+.texto{flex:1;min-width:0;display:flex;flex-direction:column;height:100%;justify-content:space-between;padding:12px 0}
+.nombre{font-size:32px;line-height:1.2;font-weight:600}
+.mensaje{font-size:58px;line-height:1.06;font-weight:600;letter-spacing:-0.03em;text-wrap:balance}
+.pie{display:flex;align-items:baseline;justify-content:space-between;gap:24px;font-size:24px}
+.firma{font-style:italic;color:var(--gris)}
+.dominio{color:var(--azul);font-weight:600}
+.foto{flex:none;width:414px;height:518px;border-radius:20px;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+</head>
+<body>
+<div class="lienzo">
+  <div class="texto">
+    <p class="nombre" style="margin:0">Erika Quiroz</p>
+    <p class="mensaje" style="margin:0">Enseño a decidir cuándo aplicar IA en el trabajo, y cuándo no.</p>
+    <div class="pie"><span class="firma">Decidir antes de aplicar.</span><span class="dominio">eriquiroz.com</span></div>
+  </div>
+  <div class="foto"><img src="/assets/erika-quiroz.jpg" alt=""></div>
+</div>
+</body>
+</html>

@@ -16,6 +16,7 @@ Repo `eriquiroz/eri-quiroz-site`, rama `master`, proyecto Vercel `eri-quiroz-sit
 index.html              el sitio
 privacidad.html         política de privacidad (se sirve en /privacidad gracias a cleanUrls)
 assets/erika-quiroz.jpg foto (960×1200, 4:5, sin metadatos)
+assets/og-image.jpg     imagen para compartir el enlace (1200×630), generada desde fuentes/og-image.html
 assets/fonts/           Hanken Grotesk (normal variable + itálica) e IBM Plex Mono, subconjunto latino, licencia OFL
 vercel.json             cleanUrls y redirecciones del blog anterior a /
 .vercelignore           lista de lo que se publica
@@ -54,9 +55,14 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 - Fuente: `fuentes/lista-verificacion-ia.html`, con el mismo sistema visual del sitio (A4, 4 páginas). El texto es el de Erika, sin cambios (su versión original está en `archivo/lista-verificacion-ia-original.pdf`).
 - Para regenerar tras editar el texto: desde la raíz, `python3 -m http.server 8765` y en otra terminal `node fuentes/generar-pdf.mjs` (requiere Playwright; con `CHROMIUM=/ruta/a/chrome` si no tiene su navegador descargado). Revisar que siga en 4 páginas.
 
+## Imagen para compartir
+
+- `assets/og-image.jpg` (1200×630): foto, nombre, mensaje principal y firma. Declarada en `og:image` de `index.html` y `privacidad.html`.
+- Fuente: `fuentes/og-image.html`. Regenerar (si cambia la foto o el mensaje) con `python3 -m http.server 8765` y `node fuentes/generar-og.mjs`.
+- LinkedIn guarda en caché la vista previa: tras cambiar la imagen, forzar la actualización en https://www.linkedin.com/post-inspector/ .
+
 ## Pendientes para lanzar del todo (solo Erika puede resolverlos)
 
 Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
-1. **og:image** 1200×630 para cuando se comparte el enlace.
-2. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+1. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
