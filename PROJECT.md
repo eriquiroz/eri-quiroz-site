@@ -32,6 +32,10 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 
 - El formulario de `#recursos` hace POST a la dirección del formulario de Brevo (atributo `action` del `<form>`, `…sibforms.com/serve/…?isAjax=1`) con los campos `EMAIL`, `email_address_check` (trampa para bots, vacío) y `locale`.
 - En Brevo: el formulario agrega el contacto a la lista **"Lista de verificación"**, sin confirmación (la cuenta no tiene activados los correos transaccionales). La **automatización de bienvenida** se activa al entrar a esa lista y envía el correo con el enlace al PDF.
+- **Probado de punta a punta en producción (septiembre 2026):** suscripción desde el sitio → contacto en la lista → correo de bienvenida → descarga del PDF.
+- Automatización de bienvenida: disparador "contacto agregado a la lista Lista de verificación", envío inmediato, con reingreso permitido. La plantilla no usa campos personalizados (el formulario solo pide el correo; un `{{ contact.FIRSTNAME }}` vacío puede impedir el envío). Enlace al PDF en texto plano.
+- Para repetir una prueba con el mismo correo: borrar primero ese contacto en Brevo (si ya está en la lista, volver a suscribirse no dispara la automatización).
+- Cuenta de Brevo verificada; mientras una cuenta nueva no está verificada, Brevo retiene los envíos aunque el flujo figure como terminado.
 - Si se cambia el formulario en Brevo, copiar la nueva dirección del `action` desde *Compartir → Código HTML* y reemplazarla en `index.html`.
 - Brevo gratis: 300 envíos al día. Suficiente para la lista; un boletín a más de 300 contactos se reparte en varios días o requiere plan pagado.
 - Correo entrante: `hola@eriquiroz.com` se reenvía a Gmail con ImprovMX (registros MX y `v=spf1` en Hostinger). Los registros de Brevo (`brevo-code`, DKIM `brevo1/2._domainkey`, `_dmarc`) conviven con esos; si se agrega otro servicio que pida SPF, combinar en un solo `v=spf1`.
@@ -47,7 +51,6 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 
 Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
-1. **Prueba real del formulario** en producción: suscribirse, recibir el correo de bienvenida y descargar el PDF.
-2. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
-3. **og:image** 1200×630 para cuando se comparte el enlace.
-4. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+1. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
+2. **og:image** 1200×630 para cuando se comparte el enlace.
+3. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
