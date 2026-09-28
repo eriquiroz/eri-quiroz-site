@@ -65,4 +65,4 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 
 Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
-1. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+1. Confirmar que el **encabezado** de LinkedIn coincide con el del brief (sección 3). El "Acerca de" ya está actualizado.
