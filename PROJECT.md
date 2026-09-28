@@ -14,9 +14,10 @@ Repo `eriquiroz/eri-quiroz-site`, rama `master`, proyecto Vercel `eri-quiroz-sit
 
 ```
 index.html              el sitio
+privacidad.html         política de privacidad (se sirve en /privacidad gracias a cleanUrls)
 assets/erika-quiroz.jpg foto (960×1200, 4:5, sin metadatos)
 assets/fonts/           Hanken Grotesk (normal variable + itálica) e IBM Plex Mono, subconjunto latino, licencia OFL
-vercel.json             redirecciones del blog anterior a /
+vercel.json             cleanUrls y redirecciones del blog anterior a /
 .vercelignore           lista de lo que se publica
 brief-eriquiroz.md      brief (manda sobre el contenido)
 reference/diseno-sitio.html   diseño aprobado
@@ -41,6 +42,12 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 - Correo entrante: `hola@eriquiroz.com` se reenvía a Gmail con ImprovMX (registros MX y `v=spf1` en Hostinger). Los registros de Brevo (`brevo-code`, DKIM `brevo1/2._domainkey`, `_dmarc`) conviven con esos; si se agrega otro servicio que pida SPF, combinar en un solo `v=spf1`.
 - DNS: el dominio usa los servidores de Hostinger (no los de Vercel). Todo registro se agrega allá.
 
+## Política de privacidad
+
+- `privacidad.html`, publicada en `https://eriquiroz.com/privacidad`, texto aprobado por Erika (septiembre 2026). Enlazada desde la nota del formulario y desde el pie de página.
+- **Si el sitio agrega analítica (Google Analytics u otra), archivos de seguimiento o un servicio nuevo que trate datos, hay que actualizar la política** (secciones "Dónde se guardan" y "Este sitio") y la fecha de actualización, con el texto aprobado por Erika.
+- No es asesoría legal: si se ofrece algo pagado o se recogen más datos, conviene revisión especializada (nueva ley chilena de datos personales vigente desde diciembre de 2026).
+
 ## Lista de verificación (PDF)
 
 - Publicada en `https://eriquiroz.com/recursos/lista-verificacion-ia.pdf` (no se enlaza desde la página; es lo que envía el servicio de correo).
@@ -51,6 +58,5 @@ Conectado a **Brevo** (cuenta gratuita de Erika, remitente `hola@eriquiroz.com`,
 
 Buscar `pendiente:` en `index.html` para ubicar cada uno.
 
-1. **Política de privacidad**: el diseño la enlazaba desde la nota del formulario, pero el brief no trae el texto. Se quitó el enlace para no apuntar a una página inexistente. Recomendable tenerla al recolectar correos.
-2. **og:image** 1200×630 para cuando se comparte el enlace.
-3. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
+1. **og:image** 1200×630 para cuando se comparte el enlace.
+2. Actualizar encabezado y "Acerca de" de LinkedIn para que coincidan con el sitio.
